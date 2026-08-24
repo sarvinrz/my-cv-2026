@@ -1,0 +1,255 @@
+{
+  "meta": {
+    "role": "Enterprise Frontend Engineer",
+    "tagline": "Building scalable banking platforms, ERP interfaces, and data-driven web applications with React, Next.js, and TypeScript."
+  },
+  "nav": {
+    "about": "About",
+    "work": "Work",
+    "stack": "Stack",
+    "experience": "Experience",
+    "education": "Education",
+    "langNav": "Languages",
+    "contact": "Contact",
+    "resume": "Resume",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu"
+  },
+  "hero": {
+    "titleLine1": "Enterprise",
+    "titleLine2": "Frontend",
+    "titleLine3": "Engineer",
+    "status": "Open to new opportunities",
+    "ctaWork": "See selected work",
+    "ctaResume": "Download résumé",
+    "caseLabel": "Portrait — interactive",
+    "specModel": "Live photo · Three.js physical material",
+    "specScroll": "Scroll to spin · drag to tilt",
+    "dragHint": "Drag to explore",
+    "photoBadge": "Same as LinkedIn",
+    "spinCaption": "Full circle.",
+    "hint": "Drag to rotate · scroll to spin",
+    "concepts": [
+      "CoreOffice ERP — Turborepo rewrite at Melal Bank",
+      "Branch portal → CoreOffice data pipeline",
+      "BPMN cartables with Form.io & Camunda",
+      "BFF monitoring — Prometheus, Grafana, Graylog"
+    ],
+    "stats": {
+      "since": { "value": "2020", "label": "In tech since" },
+      "frontend": { "value": "2022", "label": "Frontend since" },
+      "projects": { "value": "6", "label": "Selected projects" },
+      "languages": { "value": "3", "label": "Languages spoken" }
+    }
+  },
+  "about": {
+    "label": "About",
+    "headline": "Frontend engineer at Melal Bank (FAM), building CoreOffice and the systems around it.",
+    "p1": "Day to day I work on CoreOffice—an enterprise ERP for banking operations. I migrated the legacy CRA frontend to a Turborepo monorepo (Next.js, Storybook, Docusaurus), built the branch portal where staff upload documents that flow into CoreOffice, and shipped modules for loan intake, relationship graphs, and BPMN cartables.",
+    "p2": "I care about the full delivery loop: Dockerized apps, BFF layers with their own observability (Prometheus, Grafana, Graylog), Nginx hardening, and UI that stays maintainable at scale. Side projects include an open-source crypto dashboard and a thesis LLM chatbot.",
+    "focusTitle": "What I actually ship",
+    "focus": [
+      "CoreOffice ERP rewrite — Next.js, Turborepo, TanStack Query",
+      "Branch portal — uploads for transparency, payslips, debt collection",
+      "Loan platform (vama.melalbank.ir) feeding CoreOffice cartables",
+      "D3 relationship graph module inside CoreOffice",
+      "BPMN task inboxes — Form.io + Camunda",
+      "BFF monitoring stack for production Next.js apps"
+    ]
+  },
+  "stack": {
+    "label": "Technical Stack",
+    "title": "Tools & technologies by domain",
+    "lead": "Grouped by what I use each tool for in production, not by a checklist.",
+    "categories": {
+      "architecture": { "title": "Architecture & Framework", "items": "Next.js, React, TypeScript, JavaScript, Turborepo, NestJS" },
+      "state": { "title": "State & Data Fetching", "items": "TanStack Query, Redux, Redux Saga, RTK Query, Zustand, WebSocket" },
+      "ui": { "title": "UI & Styling", "items": "Tailwind CSS, CSS Modules, Ant Design, Material UI, shadcn/ui" },
+      "editors": { "title": "Rich Text & Forms", "items": "Tiptap, TinyMCE, Form.io, React Hook Form" },
+      "viz": { "title": "Charts, Graphs & Maps", "items": "D3.js, ECharts, React Flow, Leaflet, Recharts" },
+      "monitoring": { "title": "Monitoring & Logging", "items": "Grafana, Prometheus, Graylog, Nginx, Fail2Ban" },
+      "workflow": { "title": "Workflow & BPMN", "items": "Camunda, Form.io, BPMN task interfaces, process-driven forms" },
+      "devops": { "title": "DevOps & Deployment", "items": "Docker, Podman, Redis, Nginx, rate limiting, source map management" },
+      "backend": { "title": "Backend Integration", "items": "NestJS, REST APIs, Redis, WebSocket, API integration patterns" },
+      "motion": { "title": "Animation & 3D", "items": "GSAP, ScrollTrigger, Motion, Three.js, React Three Fiber" },
+      "docs": { "title": "Documentation & QA", "items": "Storybook, Docusaurus, ESLint, Git, component-driven development" },
+      "ai": { "title": "AI & Experimentation", "items": "Thesis LLM chatbot (enhanced-chatbot.vercel.app), local model prototyping, API-based AI integration" }
+    }
+  },
+  "projects": {
+    "label": "Selected Work",
+    "title": "Modules inside CoreOffice",
+    "subtitle": "Most of this work is one platform at Melal Bank—not six unrelated products. Scroll horizontally through each module's screens, then continue to the next.",
+    "scrollHint": "Scroll to browse",
+    "items": {
+      "coreoffice": {
+        "title": "CoreOffice — ERP rewrite & branch portal",
+        "category": "Melal Bank · FAM",
+        "description": "The main system I work on daily. Rewrote legacy CoreOffice from CRA to a Turborepo monorepo (Next.js, Storybook, Docusaurus). Built a branch portal where staff upload transparency files, payslips, and debt-collection documents—data lands in CoreOffice tables and downstream workflows.",
+        "story": [
+          "Full frontend migration: CRA → Turborepo + Next.js + TanStack Query",
+          "Branch portal for document uploads that sync into CoreOffice",
+          "Shared CSS Modules design language with Storybook coverage",
+          "Dockerized deployments across dev and production"
+        ]
+      },
+      "loan": {
+        "title": "Loan facilities — vama.melalbank.ir",
+        "category": "Public app · CoreOffice backend",
+        "description": "Customer-facing loan application site (Next.js, Docker). Applicants submit requests publicly; branch staff receive and process them inside CoreOffice cartables.",
+        "story": [
+          "Public SSR flows for loan requests and facility info",
+          "Submitted data flows into CoreOffice for branch review",
+          "Dockerized on banking production infrastructure"
+        ],
+        "link": "https://vama.melalbank.ir",
+        "linkLabel": "vama.melalbank.ir"
+      },
+      "graph": {
+        "title": "Relationship graph module",
+        "category": "CoreOffice · ISMS",
+        "description": "D3 force-directed graph shipped as a CoreOffice menu module. Auditors explore entity relationships that were unreadable in flat tables—used in ISMS certification workflows.",
+        "story": [
+          "Interactive pan/zoom with progressive node disclosure",
+          "Embedded inside CoreOffice, not a standalone app",
+          "Replaced dense relational tables with visual tracing"
+        ]
+      },
+      "workflow": {
+        "title": "BPMN cartable & process UI",
+        "category": "CoreOffice · Camunda",
+        "description": "Per-user task inboxes driven by BPMN. Each organizational request shows who holds it now, where it goes next, and the full flow history—all inside CoreOffice.",
+        "story": [
+          "Form.io renders dynamic forms from BPMN definitions",
+          "Camunda routes tasks, approvals, and role handoffs",
+          "Staff track requests from submission to completion"
+        ]
+      },
+      "crypto": {
+        "title": "Crypto rate dashboard",
+        "category": "Personal · open source",
+        "description": "Early portfolio project while learning React Query and i18n—multi-language crypto dashboard with pagination, dark/light mode, and live market data. Source on GitHub.",
+        "story": [
+          "First structured frontend project — React Query + i18n",
+          "Built in a Turborepo layout during iApps internship",
+          "Real-time rates with paginated market views"
+        ],
+        "link": "https://portfolio-omega-ten-22.vercel.app/",
+        "linkLabel": "Live demo · GitHub"
+      },
+      "monitoring": {
+        "title": "BFF observability stack",
+        "category": "Next.js BFF · loan & portal",
+        "description": "Monitoring for our Next.js BFF apps (loan platform & branch portal). Prometheus, Grafana, and Graylog let us inspect logs and metrics on our edge layer—not only on the main backend.",
+        "story": [
+          "Prometheus exporters + Grafana dashboards (CPU, memory, network)",
+          "Graylog for structured log search and alerting",
+          "Critical for BFF apps where we own the production edge"
+        ]
+      }
+    }
+  },
+  "experience": {
+    "label": "Work Experience",
+    "title": "Six years in tech, four of them building interfaces",
+    "lead": "From customer support to CRM management to enterprise frontend — each role fed the next.",
+    "items": {
+      "melal": {
+        "company": "Melal E-Commerce & IT (FAM)",
+        "role": "Front-end Developer",
+        "period": "Apr 2024 — Present",
+        "summary": "Building CoreOffice and satellite systems at Melal Bank (FAM). Migrated legacy ERP frontend to Turborepo/Next.js, built branch portal document uploads, loan intake UI, D3 graph module, BPMN cartables, and BFF monitoring with Prometheus/Grafana/Graylog.",
+        "highlights": [
+          "CoreOffice rewrite — Turborepo, Next.js, Storybook, Docusaurus",
+          "Branch portal — transparency, payslip, debt-collection uploads → CoreOffice",
+          "Loan platform (vama.melalbank.ir) integrated with CoreOffice cartables",
+          "D3 relationship graph module for ISMS audit workflows",
+          "BPMN cartables — Form.io + Camunda task routing",
+          "BFF observability — Prometheus, Grafana, Graylog on Next.js edge apps"
+        ]
+      },
+      "iapps_intern": {
+        "company": "iApps",
+        "role": "Front-end Developer (Intern)",
+        "period": "Jul 2022 — Mar 2023",
+        "summary": "Contributed to a modern web platform including a PWA and internal developer dashboard. Built a multi-language crypto dashboard within a Turborepo monorepo.",
+        "highlights": [
+          "PWA and internal developer dashboard with React",
+          "Turborepo monorepo for multiple applications",
+          "Multi-language crypto rate dashboard with React Query",
+          "Redux and Material UI — production debugging and refactoring"
+        ]
+      },
+      "iapps_crm": {
+        "company": "iApps",
+        "role": "CRM Manager",
+        "period": "Aug 2021 — Jul 2022",
+        "summary": "Managed CRM operations using Didar CRM. Led the support team, designed B2B/B2C customer journeys, and bridged technical and business teams.",
+        "highlights": [
+          "Didar CRM workflow design and optimization",
+          "Support team supervision and QC",
+          "Customer journey mapping and process improvement"
+        ]
+      },
+      "iapps_support": {
+        "company": "iApps",
+        "role": "Support Specialist",
+        "period": "Jun 2020 — Aug 2021",
+        "summary": "Customer support operations — handling inquiries, quality control, and process documentation for B2B and B2C clients.",
+        "highlights": [
+          "Customer support and ticket management",
+          "Quality control and performance monitoring",
+          "Process documentation and team coordination"
+        ]
+      }
+    }
+  },
+  "education": {
+    "label": "Education",
+    "title": "University of Science and Culture",
+    "lead": "Master's in IT Engineering (in progress) and bachelor's in software engineering.",
+    "items": {
+      "masters": {
+        "degree": "M.Sc. IT Engineering (E-Commerce)",
+        "school": "University of Science and Culture",
+        "period": "2022 — Present"
+      },
+      "bachelors": {
+        "degree": "B.Sc. Software Computer Engineering",
+        "school": "University of Science and Culture",
+        "period": "2018 — 2022"
+      }
+    }
+  },
+  "languages": {
+    "label": "Languages",
+    "title": "Working languages",
+    "lead": "English for daily professional work; Turkish and German for collaboration and growth.",
+    "items": {
+      "english": { "name": "English", "level": "Professional" },
+      "german": { "name": "German", "level": "Beginner" },
+      "turkish": { "name": "Turkish (Istanbul)", "level": "Intermediate" }
+    }
+  },
+  "contact": {
+    "title1": "OPEN TO",
+    "title2": "NEW",
+    "title3": "OPPORTUNITIES.",
+    "subtitle": "Available for frontend engineering roles and project collaborations.",
+    "footer": "Designed & built by Sarvin",
+    "downloadResume": "Download Resume"
+  },
+  "common": {
+    "skip": "Skip to content",
+    "problem": "Problem",
+    "approach": "Approach",
+    "outcome": "Outcome",
+    "technologies": "Technologies",
+    "galleryHint": "Swipe previews →",
+    "scrollGallery": "Scroll to browse",
+    "carouselPrev": "Previous screenshot",
+    "carouselNext": "Next screenshot",
+    "carouselGoTo": "Go to screenshot {n}",
+    "present": "Present"
+  }
+}

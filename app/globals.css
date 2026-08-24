@@ -1,0 +1,427 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ==================================================================
+   DESIGN SYSTEM
+   Mirrors lib/design-tokens.ts. Palette sampled from the LEGO render
+   and the Museum of the Future photo.
+   ================================================================== */
+
+:root {
+  /* --- raw palette ------------------------------------------------ */
+  --sky: #8fbee8;
+  --sky-light: #aed2f0;
+  --sky-deep: #4a87c4;
+  --navy: #1b2a47;
+  --cream: #f0e8d8;
+  --cream-deep: #ddd3be;
+  --gold: #c9a227;
+  --gold-light: #e0c572;
+  --caramel: #c9835b;
+  --caramel-light: #dbb584;
+  --mocha: #4a2e1c;
+  --sage: #7ba05b;
+  --steel: #8f9aa6;
+  --ink: #1a1a1b;
+  --paper: #fbfaf8;
+
+  /* --- semantic: light theme -------------------------------------- */
+  --background: var(--paper);
+  --foreground: #16181c;
+  --surface: #f2efe9;
+  --surface-elevated: #ffffff;
+  --border: #e3ded4;
+  --border-strong: #cfc8ba;
+  --muted: #6e6a63;
+  --accent: var(--sky-deep);
+  --accent-contrast: #ffffff;
+  --accent-secondary: #a88418;
+
+  /* --- radius ----------------------------------------------------- */
+  --r-xs: 4px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+
+  /* --- elevation -------------------------------------------------- */
+  --e-flat: 0 1px 2px rgba(16, 20, 28, 0.04);
+  --e-raised: 0 12px 32px -12px rgba(16, 20, 28, 0.24);
+  --e-floating: 0 32px 64px -24px rgba(16, 20, 28, 0.34);
+
+  /* --- motion ----------------------------------------------------- */
+  --d-fast: 180ms;
+  --d-base: 320ms;
+  --d-slow: 640ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dark {
+  --background: #0e1014;
+  --foreground: #ecebe6;
+  --surface: #171a20;
+  --surface-elevated: #1f232b;
+  --border: #2a2f39;
+  --border-strong: #3d4450;
+  --muted: #98a0ac;
+  --accent: var(--sky);
+  --accent-contrast: #0e1014;
+  --accent-secondary: var(--gold-light);
+
+  --e-flat: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --e-raised: 0 12px 32px -12px rgba(0, 0, 0, 0.7);
+  --e-floating: 0 32px 64px -24px rgba(0, 0, 0, 0.85);
+}
+
+@theme inline {
+  --color-sky: var(--sky);
+  --color-sky-light: var(--sky-light);
+  --color-sky-deep: var(--sky-deep);
+  --color-navy: var(--navy);
+  --color-cream: var(--cream);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-caramel: var(--caramel);
+  --color-sage: var(--sage);
+  --color-steel: var(--steel);
+  --color-ink: var(--ink);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-accent-secondary: var(--accent-secondary);
+
+  --radius-xs: var(--r-xs);
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-xl: var(--r-xl);
+
+  --shadow-flat: var(--e-flat);
+  --shadow-raised: var(--e-raised);
+  --shadow-floating: var(--e-floating);
+
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sora), var(--font-jakarta), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-mono-code), ui-monospace, monospace;
+  --font-fa: "IRANYekanX", var(--font-vazir), Tahoma, sans-serif;
+
+  /* fluid type scale */
+  --text-mega: clamp(2.75rem, 9vw, 8rem);
+  --text-mega--line-height: 0.9;
+  --text-mega--letter-spacing: -0.04em;
+  --text-display: clamp(2rem, 5.5vw, 4.25rem);
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.03em;
+  --text-title: clamp(1.5rem, 3vw, 2.5rem);
+  --text-title--line-height: 1.1;
+  --text-title--letter-spacing: -0.02em;
+  --text-lead: clamp(1.0625rem, 1.5vw, 1.3125rem);
+  --text-lead--line-height: 1.55;
+}
+
+/* ==================================================================
+   FONTS
+   IRANYekanX is the intended Persian face; Vazirmatn is the loaded
+   fallback until the licensed woff2 files are dropped in public/fonts.
+   ================================================================== */
+
+@font-face {
+  font-family: "IRANYekanX";
+  src: url("/fonts/IRANYekanX-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IRANYekanX";
+  src: url("/fonts/IRANYekanX-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IRANYekanX";
+  src: url("/fonts/IRANYekanX-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==================================================================
+   BASE
+   ================================================================== */
+
+html {
+  scroll-behavior: auto;
+  scroll-padding-top: 88px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  overflow-x: clip;
+  transition: background-color var(--d-slow) var(--ease-out),
+    color var(--d-slow) var(--ease-out);
+}
+
+html[lang="fa"] body {
+  font-family: var(--font-fa);
+}
+
+/* Persian never uses the Latin display face */
+html[lang="fa"] .font-display {
+  font-family: var(--font-fa);
+  letter-spacing: 0;
+}
+
+html[dir="rtl"] .marquee-track {
+  animation-direction: reverse;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--r-xs);
+}
+
+/* ==================================================================
+   TYPOGRAPHY PRIMITIVES
+   ================================================================== */
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+html[lang="fa"] .eyebrow {
+  font-family: var(--font-fa);
+  letter-spacing: 0.04em;
+  text-transform: none;
+  font-size: 0.75rem;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* ==================================================================
+   SURFACES
+   One card recipe, used everywhere. Accent is injected per instance
+   through --card-accent so colour never lives in a component.
+   ================================================================== */
+
+.card {
+  --card-accent: var(--accent);
+  --card-accent-soft: color-mix(in srgb, var(--card-accent) 12%, transparent);
+  position: relative;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  background: var(--surface-elevated);
+  box-shadow: var(--e-flat);
+  transition: transform var(--d-base) var(--ease-out),
+    box-shadow var(--d-base) var(--ease-out),
+    border-color var(--d-base) var(--ease-out);
+}
+
+/* the tinted wash that keeps cards from feeling dry */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    120% 90% at 0% 0%,
+    var(--card-accent-soft),
+    transparent 62%
+  );
+  opacity: 0.9;
+  transition: opacity var(--d-base) var(--ease-out);
+}
+
+/* the accent hairline along the leading edge */
+.card::after {
+  content: "";
+  position: absolute;
+  inset-block: 20%;
+  inset-inline-start: -1px;
+  width: 2px;
+  border-radius: var(--r-pill, 999px);
+  background: var(--card-accent);
+  opacity: 0;
+  transition: opacity var(--d-base) var(--ease-out),
+    inset-block var(--d-base) var(--ease-out);
+}
+
+.card-interactive:hover,
+.card-interactive:focus-within {
+  transform: translateY(-3px);
+  box-shadow: var(--e-raised);
+  border-color: color-mix(in srgb, var(--card-accent) 42%, var(--border));
+}
+
+.card-interactive:hover::before,
+.card-interactive:focus-within::before {
+  opacity: 1.4;
+}
+
+.card-interactive:hover::after,
+.card-interactive:focus-within::after {
+  opacity: 1;
+  inset-block: 12%;
+}
+
+.card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* soft coloured backdrop glow, used behind hero + section anchors */
+.aura {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.dark .aura {
+  opacity: 0.32;
+}
+
+/* ==================================================================
+   MARQUEE
+   ================================================================== */
+
+@keyframes marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 55s linear infinite;
+}
+
+.marquee-track[data-direction="right"] {
+  animation-name: marquee-right;
+}
+
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+/* ==================================================================
+   MISC EFFECTS
+   ================================================================== */
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.float-soft {
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  70% { transform: scale(1.5); opacity: 0; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+.pulse-ring::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid var(--accent);
+  animation: pulse-ring 2.4s var(--ease-out) infinite;
+}
+
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  opacity: 0.022;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* thin grid used behind structural sections */
+.blueprint {
+  background-image: linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(70% 60% at 50% 40%, black, transparent);
+}
+
+/* ==================================================================
+   ACCESSIBILITY
+   ================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .float-soft,
+  .pulse-ring::after {
+    animation: none;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (pointer: fine) {
+  [data-cursor] { cursor: none; }
+}
