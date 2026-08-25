@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { Nav } from "@/components/navigation/Nav";
 import { Cursor } from "@/components/ui/Cursor";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
+import { ScrollRestore } from "@/components/providers/ScrollRestore";
 import { Hero } from "@/sections/Hero";
 import { About } from "@/sections/About";
 import { Skills } from "@/sections/Skills";
@@ -18,6 +19,7 @@ export function PortfolioPage() {
 
   return (
     <SmoothScroll>
+      <ScrollRestore />
       <a
         href="#about"
         className="fixed start-4 top-4 z-[100] -translate-y-24 rounded-md bg-accent px-4 py-2 font-mono text-xs text-accent-contrast transition-transform focus:translate-y-0"
@@ -26,11 +28,11 @@ export function PortfolioPage() {
       </a>
       <Nav />
       <Cursor />
-      <main>
+      <main className="w-full max-w-full overflow-x-hidden">
         <Hero />
         <About />
-        <Skills />
         <Projects />
+        <Skills />
         <Experience />
         <Education />
         <Languages />

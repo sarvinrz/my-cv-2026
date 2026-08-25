@@ -3,6 +3,7 @@
 import { useEffect, type ReactNode } from "react";
 import Lenis from "lenis";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { setLenisInstance } from "@/lib/lenis-bridge";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 /**
@@ -20,6 +21,8 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
       wheelMultiplier: 0.9,
     });
 
+    setLenisInstance(lenis);
+
     lenis.on("scroll", ScrollTrigger.update);
 
     const tick = (time: number) => {
@@ -30,6 +33,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
 
     return () => {
       gsap.ticker.remove(tick);
+      setLenisInstance(null);
       lenis.destroy();
     };
   }, [reducedMotion]);

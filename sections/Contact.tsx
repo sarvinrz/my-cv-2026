@@ -17,12 +17,12 @@ export function Contact() {
     <section
       id="contact"
       aria-label="Contact"
-      className="relative flex min-h-[80vh] flex-col justify-between overflow-hidden border-t border-border bg-background pb-8 pt-24 md:pt-32"
+      className="relative flex min-h-[80vh] flex-col justify-between overflow-hidden border-t border-border bg-background pb-8 pt-16 md:pt-32"
     >
       <span aria-hidden className="aura start-[20%] top-[10%] h-[460px] w-[460px] bg-sky" />
       <span aria-hidden className="aura end-[8%] bottom-[16%] h-[320px] w-[320px] bg-gold" />
 
-      <div className="relative mx-auto w-full max-w-6xl px-6 md:px-10">
+      <div className="relative mx-auto w-full min-w-0 max-w-6xl px-4 sm:px-6 md:px-10">
         <FooterIllustration />
 
         <motion.p
@@ -58,7 +58,7 @@ export function Contact() {
             </a>
           </div>
 
-          <nav aria-label="Social links" className="flex flex-wrap items-end justify-center gap-10 md:gap-12">
+          <nav aria-label="Social links" className="flex flex-wrap items-end justify-center gap-8 md:gap-12">
             <SocialLink href={site.github} label="GitHub" icon="/social-media/github.png" />
             <SocialLink href={site.linkedin} label="LinkedIn" icon="/social-media/linkedin.png" />
             <SocialLink href={`mailto:${site.email}`} label="Email" icon="/social-media/gmail.png" />
@@ -66,11 +66,21 @@ export function Contact() {
         </motion.div>
       </div>
 
-      <footer className="relative mx-auto mt-20 flex w-full max-w-6xl flex-col gap-3 border-t border-border px-6 pt-6 md:flex-row md:items-center md:justify-between md:px-10">
-        <p className="font-mono text-[11px] tracking-wider text-muted">
-          © {localizeDigits("2026", locale)} {site.name}
+      <footer className="relative mx-auto mt-16 flex w-full max-w-6xl flex-col items-center gap-4 border-t border-border px-4 pt-8 sm:px-6 md:mt-20 md:px-10">
+        <p className="flex flex-wrap items-center justify-center gap-1.5 font-mono text-[11px] tracking-wider text-muted">
+          <span>{t("madeWith")}</span>
+          <span className="text-base leading-none" aria-hidden>
+            ☕
+          </span>
+          <span>+</span>
+          <span className="text-base leading-none" aria-hidden>
+            ❤️
+          </span>
         </p>
-        <div className="flex flex-wrap items-center gap-5">
+        <div className="flex w-full flex-col items-center justify-between gap-3 sm:flex-row">
+          <p className="font-mono text-[11px] tracking-wider text-muted/80">
+            © {localizeDigits("2026", locale)} {site.name}
+          </p>
           <a
             href={resumeHref}
             download
@@ -78,7 +88,6 @@ export function Contact() {
           >
             {t("downloadResume")} ↓
           </a>
-          <p className="font-mono text-[11px] text-muted">{t("footer")}</p>
         </div>
       </footer>
     </section>

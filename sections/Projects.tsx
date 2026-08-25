@@ -1,22 +1,166 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useTranslations } from "next-intl";
-import { projectsMeta, type ProjectMeta } from "@/lib/site";
+import { projectsMeta, site, type ProjectMeta } from "@/lib/site";
 import { useLocaleFormat } from "@/lib/format";
 import { ProjectCarousel } from "@/components/ui/ProjectCarousel";
 import { SectionHeading } from "@/components/ui/Section";
-import { Card } from "@/components/ui/Card";
+import { Card, Chip } from "@/components/ui/Card";
 import { accentFor, accents } from "@/lib/design-tokens";
 
 type ProjectCopy = {
   title: string;
   category: string;
   description: string;
-  story: string[];
+  problem: string;
+  contribution?: string[];
+  impact?: string[];
   link?: string;
   linkLabel?: string;
+  githubLink?: string;
+  githubLabel?: string;
 };
+
+function ProjectDetailCard({
+  project,
+  projectIndex,
+  copy,
+  accent,
+}: {
+  project: ProjectMeta;
+  projectIndex: number;
+  copy: ProjectCopy;
+  accent: ReturnType<typeof accentFor>;
+}) {
+  const tc = useTranslations("common");
+  const fmt = useLocaleFormat();
+
+  const demoHref = project.id === "crypto" ? site.cryptoDemo : copy.link;
+  const githubHref = project.id === "crypto" ? site.cryptoGithub : copy.githubLink;
+
+  return (
+    <Card accent={accent} interactive={false} padded={false} className="flex w-full flex-col p-4 sm:p-5 lg:p-5">
+      <div className="flex flex-wrap items-center gap-2.5">
+        <span
+          className="font-display text-2xl font-bold leading-none opacity-25 lg:text-3xl"
+          style={{ color: accents[accent].base }}
+          aria-hidden
+        >
+          {fmt.index(projectIndex)}
+        </span>
+        <span className="eyebrow" style={{ color: accents[accent].base }}>
+          {copy.category}
+        </span>
+        {project.kind === "featured" ? (
+          <Chip accent={accent} mono={false}>
+            {tc("featured")}
+          </Chip>
+        ) : project.kind === "satellite" ? (
+          <Chip accent={accent} mono={false}>
+            {tc("satellite")}
+          </Chip>
+        ) : project.kind === "personal" ? (
+          <Chip accent={accent} mono={false}>
+            {tc("personal")}
+          </Chip>
+        ) : null}
+      </div>
+
+      <h3 className="mt-2.5 font-display text-lg font-semibold leading-snug lg:text-xl">
+        {copy.title}
+      </h3>
+      <p className="mt-2 text-[13px] leading-snug text-muted lg:text-sm lg:leading-relaxed">
+        {copy.description}
+      </p>
+
+      {copy.problem ? (
+        <div className="mt-2.5 border-t border-border pt-2.5">
+          <p className="eyebrow mb-1 text-muted">{tc("problem")}</p>
+          <p className="text-[13px] leading-snug text-foreground/80 lg:text-sm">{copy.problem}</p>
+        </div>
+      ) : null}
+
+      {(copy.contribution ?? []).length > 0 ? (
+        <div className="mt-2.5">
+          <p className="eyebrow mb-1.5 text-muted">{tc("contribution")}</p>
+          <ul className="flex flex-col gap-1">
+            {(copy.contribution ?? []).map((line) => (
+              <li key={line} className="flex gap-2 text-[13px] leading-snug text-foreground/80 lg:text-sm">
+                <span
+                  className="mt-1.5 h-1 w-2 shrink-0 rounded-full"
+                  style={{ background: accents[accent].base }}
+                  aria-hidden
+                />
+                {line}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+
+      {copy.impact?.length ? (
+        <div className="mt-2.5">
+          <p className="eyebrow mb-1.5 text-muted">{tc("impact")}</p>
+          <ul className="flex flex-col gap-1">
+            {copy.impact.map((line) => (
+              <li key={line} className="flex gap-2 text-[13px] leading-snug text-foreground/80 lg:text-sm">
+                <span
+                  className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full"
+                  style={{ boxShadow: `inset 0 0 0 1.5px ${accents[accent].base}` }}
+                  aria-hidden
+                />
+                {line}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+
+      {(demoHref || githubHref) && (
+        <div className="mt-2.5 flex flex-wrap gap-2">
+          {demoHref ? (
+            <a
+              href={demoHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor="link"
+              className="rounded-md border border-border px-3 py-1.5 font-mono text-[10px] text-accent transition-colors hover:border-accent hover:text-accent-secondary"
+            >
+              {copy.linkLabel ?? tc("liveDemo")} ↗
+            </a>
+          ) : null}
+          {githubHref ? (
+            <a
+              href={githubHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor="link"
+              className="rounded-md border border-border px-3 py-1.5 font-mono text-[10px] text-accent transition-colors hover:border-accent hover:text-accent-secondary"
+            >
+              {copy.githubLabel ?? tc("github")} ↗
+            </a>
+          ) : null}
+        </div>
+      )}
+
+      <div className="mt-3 border-t border-border pt-2.5">
+        <p className="eyebrow mb-1.5 text-muted">{tc("technologies")}</p>
+        <ul className="flex flex-wrap gap-1">
+          {project.tech.map((tech) => (
+            <li
+              key={tech}
+              className="rounded-sm px-2 py-0.5 font-mono text-[9px] leading-none text-foreground/75 lg:text-[10px]"
+              style={{ background: accents[accent].soft }}
+            >
+              {tech}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Card>
+  );
+}
 
 function ProjectPanel({
   project,
@@ -33,95 +177,40 @@ function ProjectPanel({
   const fmt = useLocaleFormat();
   const tc = useTranslations("common");
   const accent = accentFor(projectIndex);
-  const slideCount = project.gallery.length;
-  const [slideIndex, setSlideIndex] = useState(0);
 
   return (
     <section ref={sectionRef} aria-label={copy.title} className="relative border-t border-border bg-surface">
-      <div className="flex min-h-screen flex-col justify-center overflow-hidden py-8 md:py-10">
-        <div className="mx-auto grid w-full max-w-6xl items-center gap-8 px-6 md:px-10 lg:grid-cols-2 lg:gap-12">
-          <div data-cursor="view" dir="ltr">
-            <ProjectCarousel
-              slides={project.gallery}
-              url={project.id}
-              accent={accent}
-              sectionRef={sectionRef}
-              scrollTriggerId={`project-${project.id}`}
-              priority={isFirst}
-              onSlideChange={setSlideIndex}
-              prevLabel={tc("carouselPrev")}
-              nextLabel={tc("carouselNext")}
-              goToLabel={(n) => tc("carouselGoTo", { n: fmt.digits(n) })}
-            />
+      <div className="relative flex min-h-0 flex-col overflow-hidden py-8 lg:h-dvh lg:max-h-dvh lg:py-0 lg:pt-19 lg:pb-6">
+        <div className="mx-auto flex min-h-0 w-full max-w-6xl flex-1 items-center px-4 sm:px-6 md:px-10">
+          <div className="grid min-h-0 w-full items-center gap-5 lg:grid-cols-2 lg:gap-8">
+            <div data-cursor="view" dir="ltr" className="min-h-0 w-full self-center">
+              <ProjectCarousel
+                key={`${project.id}-${project.gallery.length}`}
+                slides={project.gallery}
+                url={project.id}
+                accent={accent}
+                sectionRef={sectionRef}
+                scrollTriggerId={`project-${project.id}`}
+                priority={isFirst}
+                prevLabel={tc("carouselPrev")}
+                nextLabel={tc("carouselNext")}
+                goToLabel={(n) => tc("carouselGoTo", { n: fmt.digits(n) })}
+                expandLabel={tc("expandPreview")}
+                collapseLabel={tc("collapsePreview")}
+                expandHint={tc("expandHint")}
+              />
+            </div>
+
+            <div className="flex min-h-0 items-center self-center">
+              <ProjectDetailCard
+                project={project}
+                projectIndex={projectIndex}
+                copy={copy}
+                accent={accent}
+              />
+            </div>
           </div>
-
-          <Card accent={accent} className="flex flex-col md:p-7">
-            <div className="flex items-center gap-3">
-              <span
-                className="font-display text-3xl font-bold leading-none opacity-25"
-                style={{ color: accents[accent].base }}
-                aria-hidden
-              >
-                {fmt.index(projectIndex)}
-              </span>
-              <span className="eyebrow" style={{ color: accents[accent].base }}>
-                {copy.category}
-              </span>
-            </div>
-            <h3 className="mt-4 font-display text-xl font-semibold leading-snug md:text-2xl">
-              {copy.title}
-            </h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted md:text-base">
-              {copy.description}
-            </p>
-            <ul className="mt-5 flex flex-col gap-2">
-              {copy.story.map((line) => (
-                <li key={line} className="flex gap-2.5 text-sm text-foreground/80">
-                  <span
-                    className="mt-2 h-1 w-2.5 shrink-0 rounded-full"
-                    style={{ background: accents[accent].base }}
-                    aria-hidden
-                  />
-                  {line}
-                </li>
-              ))}
-            </ul>
-            {copy.link && (
-              <a
-                href={copy.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor="link"
-                className="mt-5 inline-flex w-fit items-center gap-2 font-mono text-xs text-accent transition-colors hover:text-accent-secondary"
-              >
-                {copy.linkLabel ?? copy.link} ↗
-              </a>
-            )}
-            <div className="mt-6 border-t border-border pt-4">
-              <p className="eyebrow mb-2.5 text-muted">{tc("technologies")}</p>
-              <ul className="flex flex-wrap gap-1.5">
-                {project.tech.map((tech) => (
-                  <li
-                    key={tech}
-                    className="rounded-sm px-2 py-1 font-mono text-[10px] leading-none text-foreground/75"
-                    style={{ background: accents[accent].soft }}
-                  >
-                    {tech}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Card>
         </div>
-
-        {slideCount > 1 && (
-          <p className="mt-6 text-center font-mono text-[10px] tracking-wider text-muted">
-            {tc("scrollGallery")}{" "}
-            <span className="text-accent">
-              {fmt.counter(slideIndex + 1, slideCount)}
-            </span>
-          </p>
-        )}
       </div>
     </section>
   );
@@ -136,7 +225,7 @@ export function Projects() {
       <div className="border-t border-border bg-surface px-6 pb-8 pt-24 md:px-10 md:pt-28">
         <div className="mx-auto max-w-6xl">
           <SectionHeading
-            number="03"
+            number="02"
             label={t("label")}
             accent="caramel"
             title={t("title")}
@@ -149,13 +238,7 @@ export function Projects() {
         const copy = projectCopy[project.id];
         if (!copy) return null;
         return (
-          <ProjectPanel
-            key={project.id}
-            project={project}
-            projectIndex={idx + 1}
-            copy={copy}
-            isFirst={idx === 0}
-          />
+          <ProjectPanel key={project.id} project={project} projectIndex={idx + 1} copy={copy} isFirst={idx === 0} />
         );
       })}
     </div>

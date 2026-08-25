@@ -46,19 +46,24 @@ export function Card({
   );
 }
 
-/** Small monospaced pill used for tech names, levels and metadata. */
+/** Small pill used for tech names, levels and metadata. */
 export function Chip({
   children,
   accent,
   className = "",
+  mono = true,
 }: {
   children: ReactNode;
   accent?: AccentName;
   className?: string;
+  /** Tech tokens stay monospace; translated labels should not. */
+  mono?: boolean;
 }) {
   return (
     <span
-      className={`inline-flex items-center rounded-md border px-2.5 py-1 font-mono text-[10px] tracking-wider ${className}`}
+      className={`inline-flex items-center rounded-md border px-2.5 py-1 text-[10px] ${
+        mono ? "font-mono tracking-wider" : "leading-snug tracking-wide"
+      } ${className}`}
       style={
         accent
           ? {

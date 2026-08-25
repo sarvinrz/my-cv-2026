@@ -1,9 +1,9 @@
 export const site = {
   name: "Sarvin Rezazadeh",
   firstName: "Sarvin",
-  role: "Enterprise Frontend Engineer",
+  role: "Frontend Developer",
   tagline:
-    "Frontend engineer building enterprise interfaces, dashboards, and data-driven web applications.",
+    "Frontend engineer with React, Next.js, and TypeScript — I like turning ideas into interfaces people enjoy using.",
   url: "https://sarvinrz.dev",
   email: "sarvin.rezazadeh7979@gmail.com",
   phone: "09931779422",
@@ -12,33 +12,35 @@ export const site = {
   profilePhoto: "/assets/profile-outdoor.png",
   resumeEn: "/resume-en.pdf",
   resumeFa: "/resume-fa.pdf",
+  cryptoDemo: "https://portfolio-omega-ten-22.vercel.app/",
+  cryptoGithub: "https://github.com/sarvinrz/portfolio",
 } as const;
 
 export const projectIds = [
   "coreoffice",
-  "loan",
   "graph",
   "workflow",
-  "crypto",
   "monitoring",
+  "loan",
+  "crypto",
 ] as const;
 
 export type ProjectId = (typeof projectIds)[number];
 
+export type ProjectKind = "featured" | "case-study" | "satellite" | "personal";
+
 export interface ProjectMeta {
   id: ProjectId;
-  index: string;
+  kind: ProjectKind;
   tech: string[];
-  accent: "blue" | "gold" | "sand";
   gallery: { src: string; alt: string }[];
 }
 
 export const projectsMeta: ProjectMeta[] = [
   {
     id: "coreoffice",
-    index: "01",
-    tech: ["Next.js", "Turborepo", "TanStack Query", "CSS Modules", "Storybook", "Docusaurus", "Form.io", "Camunda"],
-    accent: "blue",
+    kind: "featured",
+    tech: ["Next.js", "Turborepo", "TanStack Query", "Ant Design", "Material UI", "CSS Modules", "Storybook"],
     gallery: [
       { src: "/assets/project-coreoffice.png", alt: "CoreOffice ERP evaluation module" },
       { src: "/assets/gallery/coreoffice-2.svg", alt: "CoreOffice component library preview" },
@@ -46,21 +48,9 @@ export const projectsMeta: ProjectMeta[] = [
     ],
   },
   {
-    id: "loan",
-    index: "02",
-    tech: ["Next.js", "React", "Docker", "Redis"],
-    accent: "sand",
-    gallery: [
-      { src: "/assets/project-loan.png", alt: "Loan facilities landing page" },
-      { src: "/assets/gallery/loan-2.svg", alt: "Loan application flow" },
-      { src: "/assets/gallery/loan-3.svg", alt: "Loan dashboard preview" },
-    ],
-  },
-  {
     id: "graph",
-    index: "03",
+    kind: "case-study",
     tech: ["React", "D3", "TypeScript"],
-    accent: "blue",
     gallery: [
       { src: "/assets/gallery/graph-1.svg", alt: "Relationship graph overview" },
       { src: "/assets/gallery/graph-2.svg", alt: "Node detail panel" },
@@ -69,9 +59,8 @@ export const projectsMeta: ProjectMeta[] = [
   },
   {
     id: "workflow",
-    index: "04",
+    kind: "case-study",
     tech: ["React", "Form.io", "Camunda"],
-    accent: "gold",
     gallery: [
       { src: "/assets/gallery/workflow-1.svg", alt: "BPMN task inbox" },
       { src: "/assets/gallery/workflow-2.svg", alt: "Process form builder" },
@@ -79,50 +68,52 @@ export const projectsMeta: ProjectMeta[] = [
     ],
   },
   {
-    id: "crypto",
-    index: "05",
-    tech: ["React", "React Query", "i18n", "WebSocket"],
-    accent: "blue",
-    gallery: [
-      { src: "/assets/gallery/crypto-1.svg", alt: "Crypto market overview" },
-      { src: "/assets/gallery/crypto-2.svg", alt: "Trading pair detail" },
-      { src: "/assets/gallery/crypto-3.svg", alt: "Dark mode dashboard" },
-    ],
-  },
-  {
     id: "monitoring",
-    index: "06",
-    tech: ["Prometheus", "Grafana", "Docker"],
-    accent: "gold",
+    kind: "case-study",
+    tech: ["Prometheus", "Grafana", "Graylog", "Docker"],
     gallery: [
       { src: "/assets/project-monitoring.png", alt: "Grafana Node Exporter dashboard" },
       { src: "/assets/gallery/monitoring-2.svg", alt: "CPU metrics panel" },
       { src: "/assets/gallery/monitoring-3.svg", alt: "Alert configuration" },
     ],
   },
+  {
+    id: "loan",
+    kind: "satellite",
+    tech: ["Next.js", "Tailwind CSS", "shadcn/ui", "Docker", "Redis"],
+    gallery: [
+      { src: "/assets/project-loan.png", alt: "Loan facilities landing page" },
+      { src: "/assets/gallery/loan-1.PNG", alt: "Loan application flow" },
+      { src: "/assets/gallery/loan-2.PNG", alt: "Loan application flow 2" },
+      { src: "/assets/gallery/loan-3.PNG", alt: "Loan dashboard preview" },
+    ],
+  },
+  {
+    id: "crypto",
+    kind: "personal",
+    tech: ["React", "React Query", "i18n", "WebSocket"],
+    gallery: [
+      { src: "/assets/gallery/crypto-1.PNG", alt: "Crypto market overview" },
+      { src: "/assets/gallery/crypto-2.PNG", alt: "Trading pair detail" },
+    ],
+  },
 ];
 
 export const stackCategoryKeys = [
-  "architecture",
+  "core",
   "state",
   "ui",
-  "editors",
-  "viz",
+  "platform",
   "monitoring",
-  "workflow",
-  "devops",
-  "backend",
-  "motion",
-  "docs",
-  "ai",
+  "specialized",
 ] as const;
 
 export const marqueeRowA = [
-  "React", "Next.js", "TypeScript", "Turborepo", "TanStack Query", "Redux", "D3", "GSAP",
+  "React", "Next.js", "TypeScript", "Turborepo", "TanStack Query", "Tailwind CSS", "Ant Design",
 ];
 
 export const marqueeRowB = [
-  "Tailwind CSS", "Ant Design", "MUI", "Grafana", "Docker", "Form.io", "Camunda", "ECharts",
+  "shadcn/ui", "D3.js", "Docker", "Grafana", "Prometheus", "Camunda", "Form.io",
 ];
 
 export const experienceIds = [

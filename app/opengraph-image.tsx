@@ -30,7 +30,7 @@ export default function OpengraphImage() {
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ fontSize: 78, lineHeight: 1.02, letterSpacing: -3, fontWeight: 700 }}>
-            Enterprise
+            Frontend
           </div>
           <div
             style={{
@@ -41,7 +41,7 @@ export default function OpengraphImage() {
               color: "#8fbee8",
             }}
           >
-            Frontend Engineer
+            Developer
           </div>
         </div>
 

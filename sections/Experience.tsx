@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { gsap } from "@/lib/gsap";
 import { experienceIds } from "@/lib/site";
 import { Section, SectionHeading } from "@/components/ui/Section";
-import { Card } from "@/components/ui/Card";
+import { Card, Chip } from "@/components/ui/Card";
 import { accentFor, accents } from "@/lib/design-tokens";
 
 export function Experience() {
@@ -15,7 +15,14 @@ export function Experience() {
 
   const jobs = t.raw("items") as Record<
     string,
-    { company: string; role: string; period: string; summary: string; highlights: string[] }
+    {
+      company: string;
+      role: string;
+      period: string;
+      summary: string;
+      highlights: string[];
+      track?: "engineering" | "operations";
+    }
   >;
 
   useEffect(() => {
@@ -120,7 +127,7 @@ export function Experience() {
           lead={t("lead")}
         />
 
-        <div data-timeline className="relative mt-14 md:mt-20">
+        <div data-timeline className="relative mt-10 md:mt-20">
           <span
             className="absolute start-0 top-0 hidden h-full w-px bg-border md:block"
             aria-hidden
@@ -161,6 +168,13 @@ export function Experience() {
                       >
                         {job.role}
                       </p>
+                      {job.track ? (
+                        <Chip accent={accent} mono={false}>
+                          {job.track === "engineering"
+                            ? t("trackEngineering")
+                            : t("trackOperations")}
+                        </Chip>
+                      ) : null}
                       {isCurrent ? (
                         <span className="relative flex h-1.5 w-1.5" aria-hidden>
                           <span className="absolute inset-0 rounded-full bg-sage" />

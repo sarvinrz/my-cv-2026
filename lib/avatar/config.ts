@@ -7,4 +7,4 @@ export const AVATAR_HEIGHT = 1.72;
 export const AVATAR_LOOK_AT = 0.46;
 
 /** Pointer-driven head / gaze (design DNA). */
-export const HEAD_LOOK_GAIN = { yaw: 0.42, pitch: 0.28 } as const;
+export const HEAD_LOOK_GAIN = { yaw: 0.58, pitch: 0.38 } as const;

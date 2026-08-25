@@ -1,7 +1,7 @@
 {
   "meta": {
-    "role": "مهندس فرانت‌اند سازمانی",
-    "tagline": "توسعه پلتفرم‌های بانکی، رابط‌های ERP و اپلیکیشن‌های داده‌محور با React، Next.js و TypeScript."
+    "role": "فرانت‌اند دولوپر",
+    "tagline": "۴ سال تجربه ساخت رابط کاربری با React، Next.js و TypeScript — از ERP بانکی تا صفحات عمومی و داشبورد."
   },
   "nav": {
     "about": "درباره من",
@@ -16,163 +16,183 @@
     "menuClose": "بستن منو"
   },
   "hero": {
-    "titleLine1": "مهندس فرانت‌اند",
-    "titleLine2": "سازمانی",
+    "titleLine1": "فرانت‌اند",
+    "titleLine2": "دولوپر",
     "titleLine3": "",
-    "status": "پذیرای فرصت‌های شغلی جدید",
+    "status": "آماده فرصت‌های جدید",
     "ctaWork": "مشاهده پروژه‌ها",
     "ctaResume": "دریافت رزومه",
     "caseLabel": "پرتره — تعاملی",
     "specModel": "عکس زنده · متریال فیزیکی Three.js",
     "specScroll": "اسکرول برای چرخش · درگ برای کج‌شدن",
-    "dragHint": "بکشید تا کاوش کنید",
+    "dragHint": "",
     "photoBadge": "مطابق لینکدین",
     "spinCaption": "یک دور کامل.",
     "hint": "بکشید تا بچرخد · با اسکرول بچرخانید",
-    "concepts": [
-      "بازنویسی CoreOffice — Turborepo در بانک ملل",
-      "پیشخوان شعبه → داده در CoreOffice",
-      "کارتابل BPMN با Form.io و Camunda",
-      "مانیتورینگ BFF — Prometheus، Grafana، Graylog"
-    ],
-    "stats": {
-      "since": { "value": "۱۳۹۹", "label": "آغاز فعالیت در IT" },
-      "frontend": { "value": "۱۴۰۱", "label": "آغاز توسعه فرانت‌اند" },
-      "projects": { "value": "۶", "label": "پروژه منتخب" },
-      "languages": { "value": "۳", "label": "زبان" }
-    }
+    "concepts": []
   },
   "about": {
     "label": "درباره من",
-    "headline": "مهندس فرانت‌اند در بانک ملل (فام) — توسعه CoreOffice و سامانه‌های اطرافش.",
-    "p1": "روزانه روی CoreOffice کار می‌کنم؛ ERP سازمانی عملیات بانکی. فرانت‌اند CRA قدیمی را به مونورپو Turborepo (Next.js، Storybook، Docusaurus) مهاجرت دادم، پیشخوان شعبه ساختم که کارمندان فایل شفافیت، فیش حقوقی و وصول مطالبات آپلود می‌کنند و داده‌ها وارد CoreOffice می‌شود، و ماژول‌های تسهیلات، گراف روابط و کارتابل BPMN را تحویل دادم.",
-    "p2": "کل چرخه تحویل برایم مهم است: اپ‌های Dockerize، لایه BFF با observability اختصاصی (Prometheus، Grafana، Graylog)، سخت‌سازی Nginx و UI قابل نگهداری در مقیاس. پروژه‌های شخصی شامل داشبورد ارز دیجیتال اوپن‌سورس و چت‌بات LLM پایان‌نامه.",
-    "focusTitle": "کارهایی که واقعاً تحویل دادم",
+    "headline": "فرانت‌اند دولوپر با ۴ سال سابقه — UI خوانا، کد قابل‌نگه‌داری، تحویل بدون دردسر.",
+    "p1": "روی محصولات واقعی کار کرده‌ام: مهاجرت ERP به Next.js، پیشخوان شعبه، فرم‌های عمومی، گراف داده و کارتابل BPMN. استک اصلی React، Next.js و TypeScript است.",
+    "p2": "قبل از فرانت‌اند دو سال در پشتیبانی و CRM بودم. همان‌جا دیدم کاربر واقعی با نرم‌افزار چطور برخورد می‌کند — و این تجربه هنوز روی طراحی UI اثر می‌گذارد.",
+    "focusTitle": "تمرکز کاری",
     "focus": [
-      "بازنویسی CoreOffice — Next.js، Turborepo، TanStack Query",
-      "پیشخوان شعبه — آپلود شفافیت، فیش حقوقی، وصول مطالبات",
-      "سامانه تسهیلات (vama.melalbank.ir) متصل به کارتابل CoreOffice",
-      "ماژول گراف روابط D3 داخل CoreOffice",
-      "کارتابل BPMN — Form.io + Camunda",
-      "استک مانیتورینگ BFF برای اپ‌های Next.js پروداکشن"
+      "تبدیل نیاز محصول به UI قابل تحویل",
+      "معماری فرانت‌اند که تیم بتواند گسترش دهد",
+      "صفحات پر داده، فرم و گردش‌کار",
+      "همکاری با design، backend و ops",
+      "یادگیری ابزار جدید وقتی مسئله بخواهد",
+      "React، Next.js، TypeScript"
+    ],
+    "stats": [
+      { "value": "۴+", "label": "سال فرانت‌اند" },
+      { "value": "۱۴۰۰", "label": "شروع کار در فناوری" },
+      { "value": "۳", "label": "زبان کاری" }
     ]
   },
   "stack": {
     "label": "مهارت‌ها و ابزارها",
-    "title": "فناوری‌ها بر اساس حوزه کاری",
-    "lead": "دسته‌بندی بر اساس کاربرد واقعی هر ابزار در پروژه‌ها، نه فهرست‌کردن نام‌ها.",
+    "title": "ابزارها بر اساس کاربرد",
+    "lead": "هر گروه در پروداکشن برای چه کاری است — نه لیست مدال.",
     "categories": {
-      "architecture": { "title": "معماری و فریم‌ورک", "items": "Next.js، React، TypeScript، JavaScript، Turborepo، NestJS" },
-      "state": { "title": "مدیریت استیت و داده", "items": "TanStack Query، Redux، Redux Saga، RTK Query، Zustand، WebSocket" },
-      "ui": { "title": "رابط کاربری و استایل", "items": "Tailwind CSS، CSS Modules، Ant Design، Material UI، shadcn/ui" },
-      "editors": { "title": "ویرایشگر متن و فرم", "items": "Tiptap، TinyMCE، Form.io، React Hook Form" },
-      "viz": { "title": "نمودار، گراف و نقشه", "items": "D3.js، ECharts، React Flow، Leaflet، Recharts" },
-      "monitoring": { "title": "مانیتورینگ و لاگ", "items": "Grafana، Prometheus، Graylog، Nginx، Fail2Ban" },
-      "workflow": { "title": "گردش‌کار و BPMN", "items": "Camunda، Form.io، رابط تسک BPMN، فرم‌های فرآیند-محور" },
-      "devops": { "title": "DevOps و استقرار", "items": "Docker، Podman، Redis، Nginx، rate limiting، مدیریت source map" },
-      "backend": { "title": "یکپارچه‌سازی بک‌اند", "items": "NestJS، REST API، Redis، WebSocket، الگوهای یکپارچه‌سازی API" },
-      "motion": { "title": "انیمیشن و سه‌بعدی", "items": "GSAP، ScrollTrigger، Motion، Three.js، React Three Fiber" },
-      "docs": { "title": "مستندسازی و QA", "items": "Storybook، Docusaurus، ESLint، Git، توسعه مبتنی بر کامپوننت" },
-      "ai": { "title": "هوش مصنوعی", "items": "چت‌بات LLM پایان‌نامه (enhanced-chatbot.vercel.app)، نمونه‌سازی مدل محلی، یکپارچه‌سازی AI مبتنی بر API" }
+      "core": { "title": "Core", "level": "کار روزانه", "items": "React, Next.js, TypeScript, JavaScript" },
+      "state": { "title": "State & data", "level": "وضعیت کلاینت و سرور", "items": "TanStack Query, Redux Toolkit, RTK Query, Redux, Redux Saga, Zustand, React Hook Form, WebSocket" },
+      "ui": { "title": "UI & charts", "level": "کامپوننت و ادیتور", "items": "Tailwind CSS, CSS Modules, Ant Design, Material UI, shadcn/ui, Tiptap, TinyMCE, ECharts, React Flow, Leaflet, Recharts" },
+      "platform": { "title": "Platform & deploy", "level": "بیلد، اجرا، edge", "items": "Turborepo, Docker, Podman, Nginx, Redis, NestJS" },
+      "monitoring": { "title": "Monitoring", "level": "لاگ و متریک", "items": "Prometheus, Grafana, Graylog" },
+      "specialized": { "title": "Specialized", "level": "کتابخانه تخصصی", "items": "D3.js, Camunda, Form.io, GSAP, Three.js, Storybook, Docusaurus" }
     }
   },
   "projects": {
     "label": "پروژه‌های منتخب",
-    "title": "ماژول‌های داخل CoreOffice",
-    "subtitle": "بیشتر این کارها یک پلتفرم در بانک ملل است — نه شش محصول جدا. هر ماژول را افقی اسکرول کنید، بعد به بعدی بروید.",
+    "title": "نمونه کارهای منتخب",
+    "subtitle": "چهار کیس‌استادی از پلتفرم بانکی در بانک ملل، یک محصول عمومی و یک پروژه شخصی — مسئله، نقش من و نتیجه.",
     "scrollHint": "برای مرور اسکرول کنید",
     "items": {
       "coreoffice": {
-        "title": "CoreOffice — بازنویسی ERP و پیشخوان شعبه",
-        "category": "بانک ملل · فام",
-        "description": "سیستم اصلی که هر روز روی آن کار می‌کنم. CoreOffice قدیمی را از CRA به مونورپو Turborepo (Next.js، Storybook، Docusaurus) بازنویسی کردم. پیشخوان شعبه ساختم که کارمندان فایل شفافیت، فیش حقوقی و وصول مطالبات آپلود می‌کنند و داده وارد جدول‌ها و گردش‌کار CoreOffice می‌شود.",
-        "story": [
-          "مهاجرت کامل فرانت‌اند: CRA → Turborepo + Next.js + TanStack Query",
-          "پیشخوان شعبه برای آپلود مدارک با sync به CoreOffice",
-          "زبان طراحی CSS Modules با پوشش Storybook",
-          "استقرار Dockerize در dev و production"
+        "title": "CoreOffice — بازنویسی ERP",
+        "category": "فام (تجارت الکترونیک و فناوری اطلاعات ملل)",
+        "description": "ERP که هر روز روی آن کار می‌کنم. یک اپ CRA را به مونورپوی Next.js با Turborepo مهاجرت دادم تا CoreOffice، پیشخوان شعبه و مستندات یک سیستم طراحی مشترک داشته باشند.",
+        "problem": "صفحه‌های ERP، UI مشترک و مستندات در یک فرانت CRA بودند. ماژول جدید گران بود و پیشخوان شعبه نمی‌توانست اپ جدا deploy کند.",
+        "contribution": [
+          "CRA → Next.js + Turborepo + TanStack Query؛ پروداکشن بالا ماند",
+          "جدا کردن اپ و پکیج تا پیشخوان، ERP و مستندات مستقل deploy شوند",
+          "پیشخوان شعبه: آپلود شفافیت، فیش حقوقی و وصول مطالبات به CoreOffice"
+        ],
+        "impact": [
+          "UI مشترک به‌جای فرانت تکراری",
+          "استقرار مستقل پیشخوان و ERP"
+        ]
+      },
+      "graph": {
+        "title": "گراف روابط ISMS",
+        "category": "CoreOffice · ISMS",
+        "description": "نمای گرافیکی برای ردیابی روابط بین رکوردها در گردش‌کار گواهینامه ISMS — جایگزین جدول‌های شلوغ که ممیز نمی‌توانست در آن‌ها دنبال کند.",
+        "problem": "روابط بین رکوردها در جدول‌های شلوغ گم می‌شد. ممیز هنگام ردیابی «چه کسی به چه کسی وصل است» زمینه را از دست می‌داد.",
+        "contribution": [
+          "طراحی pan، zoom و نمایش تدریجی — نودها همسایه را به‌درخواست نشان می‌دهند",
+          "پیاده‌سازی گراف force-directed با D3 به‌عنوان ماژول CoreOffice",
+          "جایگزینی ردیابی جدولی با مسیر بصری برای ممیزی ISMS"
+        ],
+        "impact": [
+          "روابطی که در جدول خوانده نمی‌شدند قابل‌پیمایش شدند",
+          "داخل ERP تحویل شد — ممیز همان‌جا کار می‌کند که داده هست"
+        ]
+      },
+      "workflow": {
+        "title": "کارتابل BPMN",
+        "category": "CoreOffice · Camunda",
+        "description": "کارتابل شخصی مبتنی بر BPMN. هر درخواست سازمانی نشان می‌دهد الان دست کیست، قدم بعدی کجاست و تاریخچه کامل فلو — همه داخل CoreOffice.",
+        "problem": "درخواست‌ها مالک مشخصی روی صفحه نداشتند. کارمند نمی‌دید تسک دست کیست یا تاریخچه چیست — مگر اینکه از ERP خارج شود.",
+        "contribution": [
+          "کارتابل شخصی با مسیریابی Camunda",
+          "Form.io فرم را از تعریف فرآیند رندر می‌کند — نه فرم جدا برای هر نوع درخواست",
+          "دارنده فعلی، قدم بعدی و تاریخچه کامل در همان کارتابل"
+        ],
+        "impact": [
+          "کارمند درخواست را از ثبت تا پایان بدون خروج از CoreOffice دنبال می‌کند",
+          "نوع فرآیند جدید همان پوسته کارتابل و فرم را دوباره استفاده می‌کند"
+        ]
+      },
+      "monitoring": {
+        "title": "مانیتورینگ لایه BFF",
+        "category": "BFF Next.js · تسهیلات و پیشخوان",
+        "description": "سامانه تسهیلات و پیشخوان شعبه روی BFF از Next.js هستند که خودمان اجرا می‌کنیم. Prometheus، Grafana و Graylog را روی edge اضافه کردم.",
+        "problem": "لایه edge پروداکشن دست ما بود، اما فقط بک‌اند اصلی مانیتور می‌شد. خرابی تسهیلات و پیشخوان از روی خطای API حدس زده می‌شد.",
+        "contribution": [
+          "ابزارگذاری اپ‌های BFF با Prometheus exporter",
+          "داشبورد Grafana برای CPU، حافظه و شبکه روی edge",
+          "Graylog برای جستجوی لاگ ساختاریافته و هشدار"
+        ],
+        "impact": [
+          "لایه edge که خودمان اجرا می‌کنیم قابل‌مشاهده شد",
+          "حادثه روی تسهیلات و پیشخوان در خود BFF دیده می‌شود"
         ]
       },
       "loan": {
         "title": "تسهیلات — vama.melalbank.ir",
         "category": "اپ عمومی · بک‌اند CoreOffice",
-        "description": "سایت درخواست تسهیلات (Next.js، Docker). کاربران عمومی درخواست می‌دهند؛ کارمندان شعبه در کارتابل CoreOffice بررسی و تأیید می‌کنند.",
-        "story": [
-          "جریان SSR عمومی برای درخواست و اطلاعات تسهیلات",
-          "داده درخواست‌ها وارد CoreOffice برای بررسی شعبه",
+        "description": "سایت درخواست تسهیلات. متقاضی در فضای عمومی ثبت می‌کند؛ کارمند شعبه همان رکورد را در کارتابل CoreOffice بررسی می‌کند.",
+        "problem": "درخواست تسهیلات به سطح SSR عمومی نیاز داشت که همچنان وارد کارتابل شعبه شود.",
+        "contribution": [
+          "جریان عمومی Next.js برای درخواست و اطلاعات تسهیلات",
+          "داده ثبت‌شده وارد CoreOffice برای بررسی شعبه",
           "Dockerize روی زیرساخت پروداکشن بانکی"
+        ],
+        "impact": [
+          "متقاضی سایت عمومی را می‌بیند؛ شعبه همان رکورد را داخلی پردازش می‌کند"
         ],
         "link": "https://vama.melalbank.ir",
         "linkLabel": "vama.melalbank.ir"
       },
-      "graph": {
-        "title": "ماژول گراف روابط",
-        "category": "CoreOffice · ISMS",
-        "description": "گراف force-directed با D3 به‌عنوان منوی CoreOffice. ممیزان روابط بین موجودیت‌ها را کاوش می‌کنند — در گردش‌کار گواهینامه ISMS.",
-        "story": [
-          "pan/zoom تعاملی با نمایش تدریجی نودها",
-          "جاسازی داخل CoreOffice، نه اپ جداگانه",
-          "جایگزینی جدول‌های متراکم با ردیابی بصری"
-        ]
-      },
-      "workflow": {
-        "title": "کارتابل BPMN و UI فرآیند",
-        "category": "CoreOffice · Camunda",
-        "description": "کارتابل شخصی مبتنی بر BPMN. هر درخواست سازمانی نشان می‌دهد الان دست کی است، بعد کجا می‌رود و تاریخچه کامل فلو — همه داخل CoreOffice.",
-        "story": [
-          "Form.io فرم‌های پویا از تعریف BPMN رندر می‌کند",
-          "Camunda مسیریابی تسک، تأیید و handoff بین نقش‌ها",
-          "پیگیری درخواست از ثبت تا پایان"
-        ]
-      },
       "crypto": {
         "title": "داشبورد نرخ ارز دیجیتال",
         "category": "شخصی · اوپن‌سورس",
-        "description": "اولین پروژه ساختاریافته فرانت‌اند هنگام یادگیری React Query و i18n — داشبورد چندزبانه با صفحه‌بندی، تم تاریک/روشن و داده لحظه‌ای. سورس روی GitHub.",
-        "story": [
-          "اولین پروژه جدی — React Query + i18n",
+        "description": "پروژه شخصی هنگام یادگیری React Query و i18n — داشبورد چندزبانه با صفحه‌بندی، تم تاریک/روشن و داده لحظه‌ای.",
+        "problem": "به یک اپ واقعی برای یادگیری data fetching، i18n و ساختار مونورپو نیاز داشتم.",
+        "contribution": [
+          "اولین پروژه ساختاریافته — React Query + i18n",
           "ساخت در ساختار Turborepo دوران کارآموزی iApps",
           "نرخ لحظه‌ای با نمای بازار صفحه‌بندی‌شده"
         ],
+        "impact": [
+          "پروژه‌ای که Turborepo و React Query را قبل از CoreOffice برایم واقعی کرد"
+        ],
         "link": "https://portfolio-omega-ten-22.vercel.app/",
-        "linkLabel": "دمو زنده · GitHub"
-      },
-      "monitoring": {
-        "title": "استک observability برای BFF",
-        "category": "BFF Next.js · تسهیلات و پیشخوان",
-        "description": "مانیتورینگ اپ‌های BFF (تسهیلات و پیشخوان). Prometheus، Grafana و Graylog تا لاگ و متریک را سمت لایه edge خودمان ببینیم — نه فقط بک‌اند اصلی.",
-        "story": [
-          "Prometheus exporter + داشبورد Grafana (CPU، RAM، شبکه)",
-          "Graylog برای جستجوی لاگ ساختاریافته",
-          "حیاتی برای BFF که لایه پروداکشن edge دست ماست"
-        ]
+        "linkLabel": "دمو زنده",
+        "githubLabel": "GitHub"
       }
     }
   },
   "experience": {
     "label": "سوابق شغلی",
-    "title": "شش سال در حوزه فناوری، چهار سال در توسعه رابط کاربری",
-    "lead": "از پشتیبانی مشتری تا مدیریت CRM و سپس فرانت‌اند سازمانی؛ هر نقش زمینهٔ نقش بعدی شد.",
+    "title": "۴ سال فرانت‌اند",
+    "lead": "ابتدا عملیات و CRM — بعد فرانت‌اند. هر نقش زمینهٔ بعدی را ساخت.",
+    "trackEngineering": "فرانت‌اند",
+    "trackOperations": "عملیات محصول و مشتری",
     "items": {
       "melal": {
-        "company": "شرکت تجارت الکترونیک و فناوری اطلاعات ملل (فام)",
-        "role": "توسعه‌دهنده فرانت‌اند",
+        "company": "فام (تجارت الکترونیک و فناوری اطلاعات ملل)",
+        "role": "فرانت‌اند دولوپر",
         "period": "فروردین ۱۴۰۳ — اکنون",
-        "summary": "توسعه CoreOffice و سامانه‌های مرتبط در بانک ملل (فام). مهاجرت فرانت‌اند ERP به Turborepo/Next.js، پیشخوان آپلود مدارک شعبه، UI تسهیلات، ماژول گراف D3، کارتابل BPMN و مانیتورینگ BFF با Prometheus/Grafana/Graylog.",
+        "track": "engineering",
+        "summary": "توسعه CoreOffice و سامانه‌های اطرافش در بانک ملل. مهاجرت ERP به Turborepo/Next.js، پیشخوان شعبه و تسهیلات، گراف روابط ISMS، کارتابل BPMN و مانیتورینگ BFF.",
         "highlights": [
-          "بازنویسی CoreOffice — Turborepo، Next.js، Storybook، Docusaurus",
-          "پیشخوان شعبه — آپلود شفافیت، فیش حقوقی، وصول مطالبات → CoreOffice",
+          "بازنویسی CoreOffice — Turborepo، Next.js، Storybook، Docusaurus؛ پروداکشن بالا ماند",
+          "پیشخوان شعبه — آپلود شفافیت، فیش حقوقی، وصول مطالبات",
           "سامانه تسهیلات (vama.melalbank.ir) متصل به کارتابل CoreOffice",
-          "ماژول گراف روابط D3 برای گردش‌کار ISMS",
+          "گراف D3 برای گردش‌کار ممیزی ISMS",
           "کارتابل BPMN — Form.io + Camunda",
-          "observability BFF — Prometheus، Grafana، Graylog روی اپ‌های Next.js"
+          "مانیتورینگ BFF — Prometheus، Grafana، Graylog"
         ]
       },
       "iapps_intern": {
         "company": "آی‌اپس (iApps)",
-        "role": "کارآموز توسعه فرانت‌اند",
+        "role": "کارآموز فرانت‌اند",
         "period": "تیر ۱۴۰۲ — اسفند ۱۴۰۲",
-        "summary": "مشارکت در پلتفرم وب شامل PWA و داشبورد داخلی توسعه‌دهندگان. ساخت داشبورد چندزبانه ارز دیجیتال در مونورپو Turborepo.",
+        "track": "engineering",
+        "summary": "اولین نقش فرانت‌اند. PWA، داشبورد داخلی توسعه‌دهندگان و داشبورد ارز دیجیتال چندزبانه داخل Turborepo.",
         "highlights": [
           "PWA و داشبورد داخلی با React",
           "مونورپو Turborepo برای چند اپلیکیشن",
@@ -184,7 +204,8 @@
         "company": "آی‌اپس (iApps)",
         "role": "مدیر CRM",
         "period": "مرداد ۱۴۰۱ — تیر ۱۴۰۲",
-        "summary": "مدیریت عملیات CRM با Didar CRM. سرپرستی تیم پشتیبانی، طراحی مسیر مشتری B2B/B2C و هماهنگی بین تیم فنی و کسب‌وکار.",
+        "track": "operations",
+        "summary": "مدیریت عملیات CRM با Didar. سرپرستی پشتیبانی، طراحی مسیر B2B/B2C و هماهنگی بین تیم فنی و کسب‌وکار.",
         "highlights": [
           "طراحی و بهینه‌سازی گردش‌کار Didar CRM",
           "سرپرستی تیم پشتیبانی و کنترل کیفیت",
@@ -195,7 +216,8 @@
         "company": "آی‌اپس (iApps)",
         "role": "کارشناس پشتیبانی",
         "period": "خرداد ۱۴۰۰ — مرداد ۱۴۰۱",
-        "summary": "پشتیبانی مشتریان — رسیدگی به درخواست‌ها، کنترل کیفیت و مستندسازی فرآیندها برای مشتریان B2B و B2C.",
+        "track": "operations",
+        "summary": "پشتیبانی مشتری — تیکت، کنترل کیفیت و مستند فرآیند برای B2B و B2C.",
         "highlights": [
           "پشتیبانی مشتری و مدیریت تیکت",
           "کنترل کیفیت و پایش عملکرد",
@@ -224,7 +246,7 @@
   "languages": {
     "label": "زبان‌ها",
     "title": "زبان‌های کاری",
-    "lead": "انگلیسی برای کار حرفه‌ای روزانه؛ ترکی و آلمانی برای همکاری و رشد.",
+    "lead": "انگلیسی برای کار حرفه‌ای روزانه؛ ترکی و آلمانی برای همکاری.",
     "items": {
       "english": { "name": "انگلیسی", "level": "حرفه‌ای" },
       "german": { "name": "آلمانی", "level": "مبتدی" },
@@ -233,10 +255,11 @@
   },
   "contact": {
     "title1": "آماده",
-    "title2": "همکاری",
-    "title3": "و پروژه‌های جدید.",
-    "subtitle": "برای فرصت‌های شغلی فرانت‌اند و همکاری در پروژه در دسترس هستم.",
+    "title2": "فرصت‌های",
+    "title3": "جدید.",
+    "subtitle": "فرانت‌اند دولوپر — React، Next.js، TypeScript. برای همکاری تمام‌وقت، پروژه‌ای یا ایده‌های جالب در دسترس هستم.",
     "footer": "طراحی و توسعه توسط سروین رضازاده",
+    "madeWith": "ساخته‌شده با",
     "downloadResume": "دانلود رزومه"
   },
   "common": {
@@ -244,9 +267,18 @@
     "problem": "مسئله",
     "approach": "رویکرد",
     "outcome": "نتیجه",
+    "contribution": "نقش من",
+    "impact": "نتیجه",
     "technologies": "تکنولوژی‌ها",
+    "featured": "کیس‌استادی اصلی",
+    "satellite": "محصول وابسته",
+    "personal": "پروژه شخصی",
+    "liveDemo": "دمو زنده",
+    "github": "GitHub",
+    "expandPreview": "بزرگ‌نمایی",
+    "collapsePreview": "بستن",
+    "expandHint": "دوبار کلیک کنید برای بزرگ‌نمایی",
     "galleryHint": "پیش‌نمایش را بکشید ←",
-    "scrollGallery": "برای مرور اسکرول کنید",
     "carouselPrev": "اسکرین‌شات قبلی",
     "carouselNext": "اسکرین‌شات بعدی",
     "carouselGoTo": "رفتن به اسکرین‌شات {n}",

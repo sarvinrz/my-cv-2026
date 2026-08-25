@@ -23,7 +23,7 @@ export function Education() {
     >
       <SectionHeading number="05" label={t("label")} accent="steel" title={t("title")} lead={t("lead")} />
 
-      <ol className="mx-auto mt-12 grid max-w-3xl gap-4">
+      <ol className="mt-12 grid gap-4">
         {educationIds.map((id, i) => {
           const degree = degrees[id];
           if (!degree) return null;

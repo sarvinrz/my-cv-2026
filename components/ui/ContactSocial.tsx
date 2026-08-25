@@ -1,8 +1,5 @@
 "use client";
 
-import { easeOut } from "@/lib/design-tokens";
-import { motion } from "motion/react";
-
 type SocialLinkProps = {
   href: string;
   label: string;
@@ -37,27 +34,17 @@ export function SocialLink({ href, label, icon }: SocialLinkProps) {
 
 export function FooterIllustration() {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 28, scale: 0.96 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-10%" }}
-      transition={{ duration: 0.9, ease: easeOut }}
-      className="relative mx-auto w-full max-w-xl md:max-w-2xl"
-    >
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-x-[8%] bottom-[6%] h-8 rounded-full bg-black/20 blur-2xl"
-      />
+    <div className="relative mx-auto w-full max-w-xl md:max-w-2xl">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/footerintro-cutout.png"
         alt=""
         width={1264}
         height={843}
-        className="relative mx-auto w-full max-w-[520px] drop-shadow-[0_24px_48px_rgba(0,0,0,0.22)]"
+        className="mx-auto w-full max-w-[280px] object-contain sm:max-w-[420px] md:max-w-[520px]"
         loading="lazy"
         decoding="async"
       />
-    </motion.div>
+    </div>
   );
 }

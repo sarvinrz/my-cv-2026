@@ -36,7 +36,7 @@ export function Skills() {
       label="Technical stack"
       aura={{ accent: "gold", className: "start-[-10%] top-[24%] h-[380px] w-[380px]" }}
     >
-      <SectionHeading number="02" label={t("label")} accent="gold" title={t("title")} lead={t("lead")} />
+      <SectionHeading number="03" label={t("label")} accent="gold" title={t("title")} lead={t("lead")} />
 
       <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {stackCategoryKeys.map((key, i) => {

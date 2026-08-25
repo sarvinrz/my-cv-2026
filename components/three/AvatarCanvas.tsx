@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef } from "react";
+import { useCallback, useLayoutEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import { avatarState } from "./avatarState";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -24,7 +24,20 @@ function updatePointer(e: React.PointerEvent<HTMLDivElement>) {
 
 export function AvatarCanvas({ compact = false }: { compact?: boolean }) {
   const reducedMotion = useReducedMotion();
+  const wrapRef = useRef<HTMLDivElement>(null);
   const pointer = useRef({ id: -1, lastX: 0, lastT: 0 });
+
+  // Locale switch remounts the tree; nudge R3F to re-measure the canvas box.
+  useLayoutEffect(() => {
+    const bump = () => window.dispatchEvent(new Event("resize"));
+    bump();
+    const raf = requestAnimationFrame(bump);
+    const timer = window.setTimeout(bump, 120);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.clearTimeout(timer);
+    };
+  }, []);
 
   const onPointerDown = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
     pointer.current = { id: e.pointerId, lastX: e.clientX, lastT: performance.now() };
@@ -54,6 +67,7 @@ export function AvatarCanvas({ compact = false }: { compact?: boolean }) {
 
   return (
     <div
+      ref={wrapRef}
       className={`h-full w-full cursor-grab active:cursor-grabbing ${compact ? "min-h-[240px]" : ""}`}
       style={{ touchAction: "pan-y" }}
       data-cursor="drag"

@@ -2,6 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
+import { saveScrollPosition } from "@/lib/scroll-preserve";
 
 export function LocaleSwitcher() {
   const locale = useLocale();
@@ -13,7 +14,10 @@ export function LocaleSwitcher() {
   return (
     <button
       type="button"
-      onClick={() => router.replace(pathname, { locale: next })}
+      onClick={() => {
+        saveScrollPosition();
+        router.replace(pathname, { locale: next, scroll: false });
+      }}
       className="flex h-9 items-center rounded-md border border-border bg-surface-elevated px-3 font-mono text-[11px] tracking-wider text-foreground/70 transition-colors duration-[--d-fast] hover:border-accent hover:text-accent"
       aria-label={locale === "en" ? "Switch to Persian" : "Switch to English"}
     >

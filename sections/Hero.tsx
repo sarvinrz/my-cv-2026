@@ -8,11 +8,6 @@ import { AvatarCanvas } from "@/components/three/AvatarCanvas";
 import { avatarState } from "@/components/three/avatarState";
 import { site } from "@/lib/site";
 
-/**
- * Splits a line into word-level masks. Word level rather than character
- * level on purpose: Persian is a joined script and per-character spans
- * break its shaping.
- */
 function MaskedLine({ text, className }: { text: string; className?: string }) {
   return (
     <span className={className}>
@@ -36,14 +31,13 @@ export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const degreeRef = useRef<HTMLSpanElement>(null);
 
-  const concepts = t.raw("concepts") as string[];
-
   const degreeFormat = useMemo(
     () => new Intl.NumberFormat(fmt.locale === "fa" ? "fa-IR" : "en-US", { maximumFractionDigits: 0 }),
     [fmt.locale],
   );
 
   useEffect(() => {
+    avatarState.scrollProgress = 0;
     const mm = gsap.matchMedia();
 
     mm.add("(prefers-reduced-motion: no-preference)", () => {
@@ -72,8 +66,7 @@ export function Hero() {
           0.2,
         );
 
-      // The single source of rotation: scroll progress across the pin.
-      const spin = gsap.timeline({
+      gsap.timeline({
         scrollTrigger: {
           trigger: section,
           start: "top top",
@@ -88,25 +81,6 @@ export function Hero() {
         },
       });
 
-      // Concepts light up one quarter-turn at a time.
-      q("[data-concept]").forEach((el, i) => {
-        gsap.fromTo(
-          el,
-          { opacity: 0.22, x: -14 },
-          {
-            opacity: 1,
-            x: 0,
-            scrollTrigger: {
-              trigger: section,
-              start: `top+=${90 + i * 90} top`,
-              end: `top+=${200 + i * 90} top`,
-              scrub: true,
-            },
-          },
-        );
-      });
-
-      // Sparkle beat near a full turn.
       gsap.fromTo(
         q("[data-hero-hint]"),
         { opacity: 0.4 },
@@ -116,7 +90,6 @@ export function Hero() {
         },
       );
 
-      // Cinematic hand-off into About: no hard cut.
       gsap.to(q("[data-hero-stage]"), {
         scale: 0.94,
         opacity: 0.25,
@@ -124,10 +97,6 @@ export function Hero() {
         ease: "none",
         scrollTrigger: { trigger: section, start: "88% top", end: "bottom top", scrub: true },
       });
-
-      return () => {
-        spin.kill();
-      };
     });
 
     mm.add("(prefers-reduced-motion: reduce)", () => {
@@ -135,7 +104,7 @@ export function Hero() {
     });
 
     return () => mm.revert();
-  }, [degreeFormat]);
+  }, [degreeFormat, fmt.locale]);
 
   const resumeHref = fmt.locale === "fa" ? site.resumeFa : site.resumeEn;
   const titleLines = [t("titleLine1"), t("titleLine2"), t("titleLine3")].filter(Boolean);
@@ -145,25 +114,35 @@ export function Hero() {
       ref={sectionRef}
       id="top"
       aria-label="Introduction"
-      className="relative h-[260vh] motion-reduce:h-auto"
+      className="relative h-[118vh] sm:h-[125vh] lg:h-[135vh] motion-reduce:h-auto"
     >
-      <span
-        aria-hidden
-        className="aura start-[-10%] top-[8%] h-[420px] w-[420px] bg-sky"
-      />
-      <span
-        aria-hidden
-        className="aura end-[-6%] top-[42%] h-[360px] w-[360px] bg-gold"
-      />
+      <span aria-hidden className="aura start-[-10%] top-[8%] h-[420px] w-[420px] bg-sky" />
+      <span aria-hidden className="aura end-[-6%] top-[42%] h-[360px] w-[360px] bg-gold" />
 
-      <div className="sticky top-0 flex min-h-screen items-center overflow-hidden motion-reduce:static">
+      <div className="sticky top-0 flex min-h-dvh items-start overflow-hidden pt-20 motion-reduce:static motion-reduce:pt-0 sm:items-center sm:pt-0">
         <div
           data-hero-stage
-          className="mx-auto w-full max-w-6xl px-6 pb-12 pt-28 md:px-10 md:pb-16 md:pt-32"
+          className="mx-auto w-full max-w-6xl px-4 pb-6 pt-4 sm:px-6 md:px-10 md:pb-8 md:pt-28"
         >
-          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
-            {/* ---------------- Type column ---------------- */}
-            <div className="relative z-10">
+          <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+            <div
+              data-hero-visual
+              className="relative order-1 mx-auto flex h-[min(46svh,360px)] w-full max-w-md flex-col items-center justify-center sm:h-[min(52svh,420px)] lg:order-2 lg:h-[min(62vh,480px)] lg:max-w-none"
+            >
+              <div className="relative h-full w-full min-h-[240px]">
+                <AvatarCanvas compact />
+              </div>
+              <p
+                data-hero-hint
+                className="mt-2 flex items-center gap-2 font-mono text-[10px] tracking-wider text-muted"
+              >
+                <span className="text-accent">
+                  <span ref={degreeRef}>0</span>°
+                </span>
+              </p>
+            </div>
+
+            <div className="relative z-10 order-2 lg:order-1">
               <p
                 data-hero-fade
                 className="eyebrow inline-flex items-center gap-2 rounded-md border border-border bg-surface-elevated px-3 py-1.5 text-muted"
@@ -175,7 +154,7 @@ export function Hero() {
                 {t("status")}
               </p>
 
-              <h1 className="mt-5 font-display text-mega font-bold">
+              <h1 className="mt-4 font-display text-mega font-bold sm:mt-5">
                 {titleLines.map((line, i) => (
                   <MaskedLine
                     key={line}
@@ -185,29 +164,11 @@ export function Hero() {
                 ))}
               </h1>
 
-              <p
-                data-hero-fade
-                className="mt-6 max-w-lg text-lead text-muted"
-              >
+              <p data-hero-fade className="mt-4 max-w-lg text-lead text-muted sm:mt-5">
                 {meta("tagline")}
               </p>
 
-              <ul className="mt-8 flex flex-col gap-2.5">
-                {concepts.map((concept, i) => (
-                  <li
-                    key={concept}
-                    data-concept
-                    className="flex items-baseline gap-3 text-sm text-foreground/80 md:text-base"
-                  >
-                    <span className="font-mono text-[10px] text-accent">
-                      {fmt.index(i + 1)}
-                    </span>
-                    {concept}
-                  </li>
-                ))}
-              </ul>
-
-              <div data-hero-fade className="mt-10 flex flex-wrap items-center gap-3">
+              <div data-hero-fade className="mt-6 flex flex-wrap items-center gap-3 sm:mt-8">
                 <a
                   href="#work"
                   data-cursor="link"
@@ -224,33 +185,6 @@ export function Hero() {
                   {t("ctaResume")}
                 </a>
               </div>
-            </div>
-
-            {/* 3D character — no card, same background as the text column */}
-            <div
-              data-hero-visual
-              className="relative mx-auto flex h-[min(68vh,520px)] w-full max-w-md flex-col items-center justify-center lg:max-w-none"
-            >
-              <div className="relative h-full w-full min-h-[300px]">
-                <AvatarCanvas compact />
-              </div>
-              <p
-                data-hero-hint
-                className="mt-3 flex items-center gap-2 font-mono text-[10px] tracking-wider text-muted"
-              >
-                <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" aria-hidden>
-                  <path
-                    d="M8 7 4 12l4 5M16 7l4 5-4 5"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                  />
-                </svg>
-                {t("dragHint")}
-                <span className="text-accent">
-                  · <span ref={degreeRef}>0</span>°
-                </span>
-              </p>
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { gsap } from "@/lib/gsap";
+import { useLocaleFormat } from "@/lib/format";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Card } from "@/components/ui/Card";
 import { accentFor } from "@/lib/design-tokens";
@@ -22,7 +23,12 @@ function Words({ text }: { text: string }) {
 
 export function About() {
   const t = useTranslations("about");
+  const fmt = useLocaleFormat();
   const focus = t.raw("focus") as string[];
+  const rawStats = t.raw("stats");
+  const stats = Array.isArray(rawStats)
+    ? (rawStats as { value: string; label: string }[])
+    : [];
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -90,12 +96,27 @@ export function About() {
 
         <h2
           data-about-headline
-          className="mt-8 max-w-3xl text-balance font-display text-display font-semibold"
+          className="mt-6 w-full font-display text-display font-semibold sm:mt-8"
         >
           {t("headline")}
         </h2>
 
-        <div className="mt-12 grid gap-8 md:mt-14 md:grid-cols-2 md:gap-10">
+        {stats.length > 0 ? (
+          <ul className="mt-8 grid grid-cols-3 gap-3 sm:mt-10 sm:gap-8">
+            {stats.map((stat) => (
+              <li key={stat.label} className="min-w-0">
+                <p className="font-display text-xl font-semibold tabular-nums sm:text-2xl md:text-3xl">
+                  {fmt.digits(stat.value)}
+                </p>
+                <p className="mt-1.5 text-[11px] leading-snug text-muted sm:max-w-48 sm:text-sm">
+                  {stat.label}
+                </p>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+
+        <div className="mt-12 grid gap-8 lg:mt-14 lg:grid-cols-2 lg:gap-10">
           <p data-reveal-block className="text-base leading-relaxed md:text-lg">
             <Words text={t("p1")} />
           </p>

@@ -1,11 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Sora, Plus_Jakarta_Sans, JetBrains_Mono, Vazirmatn } from "next/font/google";
+import localFont from "next/font/local";
+import { Sora, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import { site } from "@/lib/site";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import enMessages from "../../messages/en.json";
+import faMessages from "../../messages/fa.json";
 import "../globals.css";
 
 const sora = Sora({
@@ -19,15 +22,33 @@ const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
 });
 
+const iranyekan = localFont({
+  src: [
+    {
+      path: "../../public/fonts/iranyekan/IRANYekan-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/iranyekan/IRANYekan-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/iranyekan/IRANYekan-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-iranyekan",
+  display: "swap",
+  fallback: ["Tahoma", "Arial", "sans-serif"],
+});
+
 const jetbrains = JetBrains_Mono({
   variable: "--font-mono-code",
   subsets: ["latin"],
   weight: ["400", "500"],
-});
-
-const vazirmatn = Vazirmatn({
-  variable: "--font-vazir",
-  subsets: ["arabic"],
 });
 
 export async function generateMetadata({
@@ -36,12 +57,12 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "meta" });
-  const title = `${site.name} — ${t("role")}`;
+  const catalog = locale === "fa" ? faMessages : enMessages;
+  const title = `${site.name} — ${catalog.meta.role}`;
 
   return {
     title,
-    description: t("tagline"),
+    description: catalog.meta.tagline,
     metadataBase: new URL(site.url),
     alternates: {
       canonical: `/${locale}`,
@@ -49,12 +70,12 @@ export async function generateMetadata({
     },
     openGraph: {
       title,
-      description: t("tagline"),
+      description: catalog.meta.tagline,
       type: "website",
       url: `${site.url}/${locale}`,
       locale: locale === "fa" ? "fa_IR" : "en_US",
     },
-    twitter: { card: "summary_large_image", title, description: t("tagline") },
+    twitter: { card: "summary_large_image", title, description: catalog.meta.tagline },
   };
 }
 
@@ -80,15 +101,18 @@ export default async function LocaleLayout({
   if (!routing.locales.includes(locale as Locale)) notFound();
 
   setRequestLocale(locale);
-  const messages = await getMessages();
+  const messages = locale === "fa" ? faMessages : enMessages;
   const dir = locale === "fa" ? "rtl" : "ltr";
+  const fontVars = [sora.variable, jakarta.variable, jetbrains.variable, locale === "fa" ? iranyekan.variable : ""]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <html
       lang={locale}
       dir={dir}
       suppressHydrationWarning
-      className={`${sora.variable} ${jakarta.variable} ${jetbrains.variable} ${vazirmatn.variable} h-full antialiased`}
+      className={`${fontVars} h-full antialiased`}
     >
       <body className="grain min-h-full bg-background text-foreground">
         <ThemeProvider>

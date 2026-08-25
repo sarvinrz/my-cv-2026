@@ -112,13 +112,13 @@
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-sora), var(--font-jakarta), ui-sans-serif, sans-serif;
   --font-mono: var(--font-mono-code), ui-monospace, monospace;
-  --font-fa: "IRANYekanX", var(--font-vazir), Tahoma, sans-serif;
+  --font-fa: var(--font-iranyekan), Tahoma, sans-serif;
 
   /* fluid type scale */
-  --text-mega: clamp(2.75rem, 9vw, 8rem);
+  --text-mega: clamp(2.05rem, 8vw, 8rem);
   --text-mega--line-height: 0.9;
   --text-mega--letter-spacing: -0.04em;
-  --text-display: clamp(2rem, 5.5vw, 4.25rem);
+  --text-display: clamp(1.65rem, 6vw, 4.25rem);
   --text-display--line-height: 1;
   --text-display--letter-spacing: -0.03em;
   --text-title: clamp(1.5rem, 3vw, 2.5rem);
@@ -130,33 +130,8 @@
 
 /* ==================================================================
    FONTS
-   IRANYekanX is the intended Persian face; Vazirmatn is the loaded
-   fallback until the licensed woff2 files are dropped in public/fonts.
+   IRANYekan loaded via next/font/local on /fa (public/fonts/iranyekan).
    ================================================================== */
-
-@font-face {
-  font-family: "IRANYekanX";
-  src: url("/fonts/IRANYekanX-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "IRANYekanX";
-  src: url("/fonts/IRANYekanX-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "IRANYekanX";
-  src: url("/fonts/IRANYekanX-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
 
 /* ==================================================================
    BASE
@@ -166,6 +141,8 @@ html {
   scroll-behavior: auto;
   scroll-padding-top: 88px;
   -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 html.lenis,
@@ -182,7 +159,8 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   font-feature-settings: "ss01", "cv11";
-  overflow-x: clip;
+  overflow-x: hidden;
+  max-width: 100%;
   transition: background-color var(--d-slow) var(--ease-out),
     color var(--d-slow) var(--ease-out);
 }

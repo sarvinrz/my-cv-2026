@@ -12,7 +12,7 @@ const TWO_PI = Math.PI * 2;
 
 function CharacterRig({ reducedMotion }: { reducedMotion: boolean }) {
   const root = useRef<THREE.Group>(null);
-  const intro = useRef(0);
+  const intro = useRef(avatarState.ready ? 1 : 0);
 
   useFrame((state, delta) => {
     const g = root.current;
@@ -37,8 +37,8 @@ function CharacterRig({ reducedMotion }: { reducedMotion: boolean }) {
     const targetY = avatarState.scrollProgress * TWO_PI + avatarState.dragOffset;
     g.rotation.y = THREE.MathUtils.damp(g.rotation.y, targetY, 7, delta);
 
-    const targetTiltX = avatarState.pointerY * 0.08;
-    const targetTiltZ = -avatarState.pointerX * 0.08;
+    const targetTiltX = avatarState.pointerY * 0.15;
+    const targetTiltZ = -avatarState.pointerX * 0.15;
     g.rotation.x = THREE.MathUtils.damp(g.rotation.x, targetTiltX, 4, delta);
     g.rotation.z = THREE.MathUtils.damp(g.rotation.z, targetTiltZ, 4, delta);
 
@@ -71,7 +71,7 @@ export default function AvatarScene({
       camera={{ position: [0, camY, camZ], fov: compact ? 38 : 35, near: 0.01, far: 100 }}
       dpr={[1, 1.75]}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-      style={{ touchAction: "pan-y", background: "transparent" }}
+      style={{ touchAction: "pan-y", background: "transparent", width: "100%", height: "100%", display: "block" }}
       aria-hidden
     >
       <Suspense fallback={null}>

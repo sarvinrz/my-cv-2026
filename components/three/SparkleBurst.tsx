@@ -5,21 +5,15 @@ import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import { avatarState } from "./avatarState";
 
-/**
- * A small, choreographed set of four-point stars that appear as the
- * avatar completes its 360° rotation — a product-reveal moment, not a
- * particle system. Each star lives in a narrow progress window near the
- * end of the hero scroll and scrubs with it (scrolling back replays it).
- */
-
-const WINDOW_START = 0.8;
-const WINDOW_END = 0.96;
+const TWO_PI = Math.PI * 2;
+const WINDOW_START = 0.78;
+const WINDOW_END = 0.98;
 
 interface StarSpec {
   position: [number, number, number];
   color: string;
   size: number;
-  delay: number; // 0..1 within the window
+  delay: number;
   spin: number;
 }
 
@@ -46,6 +40,13 @@ function createStarGeometry(): THREE.ShapeGeometry {
   }
   shape.closePath();
   return new THREE.ShapeGeometry(shape, 4);
+}
+
+/** Scroll progress + drag rotation — stars appear near a full turn. */
+function spinProgress(): number {
+  const turns = avatarState.scrollProgress + avatarState.dragOffset / TWO_PI;
+  const frac = turns - Math.floor(turns);
+  return frac;
 }
 
 export function SparkleBurst({ compact = false }: { compact?: boolean }) {
@@ -77,15 +78,19 @@ export function SparkleBurst({ compact = false }: { compact?: boolean }) {
 
   useFrame((_, delta) => {
     if (!group.current) return;
-    const p = avatarState.scrollProgress;
-    const windowP = (p - WINDOW_START) / (WINDOW_END - WINDOW_START);
+    const frac = spinProgress();
+    const windowP =
+      frac >= WINDOW_START
+        ? (frac - WINDOW_START) / (WINDOW_END - WINDOW_START)
+        : frac <= 0.06
+          ? (frac + 1 - WINDOW_START) / (WINDOW_END - WINDOW_START)
+          : -1;
 
     group.current.children.forEach((child, i) => {
       const spec = STARS[i];
       const mesh = child as THREE.Mesh;
-      // each star occupies a sub-window offset by its delay
-      const local = THREE.MathUtils.clamp((windowP - spec.delay * 0.6) / 0.4, 0, 1);
-      // rise-and-fall envelope: appear, hold, fade
+      const local =
+        windowP < 0 ? 0 : THREE.MathUtils.clamp((windowP - spec.delay * 0.6) / 0.4, 0, 1);
       const envelope = Math.sin(local * Math.PI);
       const eased = envelope * envelope * (3 - 2 * envelope);
       materials[i].opacity = eased;
