@@ -9,7 +9,7 @@ export const site = {
   phone: "09931779422",
   github: "https://github.com/sarvinrz",
   linkedin: "https://www.linkedin.com/in/sarvin-rezazadeh-b9b93717b/",
-  profilePhoto: "/assets/profile-outdoor.png",
+  profilePhoto: "/assets/profile.png",
   resumeEn: "/resume-en.pdf",
   resumeFa: "/resume-fa.pdf",
   cryptoDemo: "https://portfolio-omega-ten-22.vercel.app/",
