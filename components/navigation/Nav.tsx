@@ -10,10 +10,11 @@ import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { LocaleSwitcher } from "@/components/ui/LocaleSwitcher";
 import { easeOut } from "@/lib/design-tokens";
 
-const SECTION_IDS = ["about", "stack", "work", "experience", "education", "languages", "contact"] as const;
+const SECTION_IDS = ["about", "stack", "work", "experience", "education", "contact"] as const;
 
 export function Nav() {
   const t = useTranslations("nav");
+  const th = useTranslations("hero");
   const locale = useLocale();
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState<string | null>(null);
@@ -27,7 +28,6 @@ export function Nav() {
     { id: "stack", label: t("stack") },
     { id: "experience", label: t("experience") },
     { id: "education", label: t("education") },
-    { id: "languages", label: t("langNav") },
     { id: "contact", label: t("contact") },
   ] as const;
 
@@ -99,13 +99,13 @@ export function Nav() {
           >
             <Image
               src={site.profilePhoto}
-              alt={site.name}
+              alt={`${th("firstName")} ${th("lastName")}`}
               width={72}
               height={72}
               className="h-9 w-9 shrink-0 rounded-full border border-border object-cover sm:h-10 sm:w-10"
               priority
             />
-            <span className="hidden truncate text-sm font-medium tracking-tight sm:inline">{site.firstName}</span>
+            <span className="hidden truncate text-sm font-medium tracking-tight sm:inline">{th("firstName")}</span>
           </a>
 
           <ul className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 xl:flex">
@@ -190,7 +190,7 @@ export function Nav() {
                     }`}
                   >
                     <div className="flex items-center justify-between border-b border-border px-5 py-4">
-                      <p className="eyebrow text-muted">{site.firstName}</p>
+                      <p className="eyebrow text-muted">{th("firstName")}</p>
                       <button
                         type="button"
                         onClick={closeMenu}

@@ -11,7 +11,6 @@ import { Skills } from "@/sections/Skills";
 import { Projects } from "@/sections/Projects";
 import { Experience } from "@/sections/Experience";
 import { Education } from "@/sections/Education";
-import { Languages } from "@/sections/Languages";
 import { Contact } from "@/sections/Contact";
 
 export function PortfolioPage() {
@@ -35,7 +34,6 @@ export function PortfolioPage() {
         <Skills />
         <Experience />
         <Education />
-        <Languages />
         <Contact />
       </main>
     </SmoothScroll>

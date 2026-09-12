@@ -38,7 +38,7 @@ export function Skills() {
     >
       <SectionHeading number="03" label={t("label")} accent="gold" title={t("title")} lead={t("lead")} />
 
-      <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {stackCategoryKeys.map((key, i) => {
           const category = categoryData[key];
           if (!category) return null;
@@ -88,7 +88,7 @@ export function Skills() {
         })}
       </div>
 
-      <div className="mt-16 -mx-6 md:-mx-10">
+      <div className="mt-10 -mx-6 md:-mx-10">
         <Marquee items={marqueeRowA} direction="left" />
         <Marquee items={marqueeRowB} direction="right" />
       </div>

@@ -29,7 +29,7 @@ export function Section({
     <section
       id={id}
       aria-label={label}
-      className={`relative py-24 md:py-32 ${className}`}
+      className={`relative py-14 md:py-20 ${className}`}
     >
       {aura ? (
         <span

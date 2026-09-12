@@ -78,8 +78,9 @@ export function GlbAvatar() {
     mixer.current?.update(delta);
     const t = look.current;
     if (!t) return;
+    const lookUp = Math.min(0, avatarState.pointerY);
     const targetY = lookBase.current.y + HEAD_LOOK_GAIN.yaw * avatarState.pointerX;
-    const targetX = lookBase.current.x + HEAD_LOOK_GAIN.pitch * avatarState.pointerY;
+    const targetX = lookBase.current.x + HEAD_LOOK_GAIN.pitch * lookUp;
     t.rotation.y = THREE.MathUtils.damp(t.rotation.y, targetY, 9, delta);
     t.rotation.x = THREE.MathUtils.damp(t.rotation.x, targetX, 9, delta);
   });

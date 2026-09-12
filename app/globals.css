@@ -112,7 +112,7 @@
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-sora), var(--font-jakarta), ui-sans-serif, sans-serif;
   --font-mono: var(--font-mono-code), ui-monospace, monospace;
-  --font-fa: var(--font-iranyekan), Tahoma, sans-serif;
+  --font-fa: var(--font-peyda), var(--font-iranyekan), Tahoma, sans-serif;
 
   /* fluid type scale */
   --text-mega: clamp(2.05rem, 8vw, 8rem);
@@ -130,7 +130,7 @@
 
 /* ==================================================================
    FONTS
-   IRANYekan loaded via next/font/local on /fa (public/fonts/iranyekan).
+   Persian: Peyda (public/fonts/Peyda.*) with IRANYekan as fallback.
    ================================================================== */
 
 /* ==================================================================
@@ -165,14 +165,23 @@ body {
     color var(--d-slow) var(--ease-out);
 }
 
-html[lang="fa"] body {
-  font-family: var(--font-fa);
+html[lang="fa"] body,
+html[lang="fa"] .font-sans,
+html[lang="fa"] .font-display {
+  font-family: var(--font-peyda), var(--font-iranyekan), Tahoma, sans-serif;
 }
 
-/* Persian never uses the Latin display face */
 html[lang="fa"] .font-display {
-  font-family: var(--font-fa);
+  font-family: var(--font-iranyekan), var(--font-peyda), Tahoma, sans-serif;
   letter-spacing: 0;
+}
+
+html[lang="fa"] .text-mega {
+  font-family: var(--font-iranyekan), var(--font-peyda), Tahoma, sans-serif;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0;
+  font-size: clamp(2.35rem, 6.4vw, 5.4rem);
 }
 
 html[dir="rtl"] .marquee-track {
@@ -202,10 +211,14 @@ html[dir="rtl"] .marquee-track {
   text-transform: uppercase;
 }
 
-html[lang="fa"] .eyebrow {
-  font-family: var(--font-fa);
+html[lang="fa"] .eyebrow,
+html[lang="fa"] [data-code-role] {
+  font-family: var(--font-peyda), var(--font-iranyekan), Tahoma, sans-serif;
   letter-spacing: 0.04em;
   text-transform: none;
+}
+
+html[lang="fa"] .eyebrow {
   font-size: 0.75rem;
 }
 
@@ -365,6 +378,15 @@ html[lang="fa"] .eyebrow {
   animation: pulse-ring 2.4s var(--ease-out) infinite;
 }
 
+@keyframes blink {
+  0%, 45% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
 .grain::after {
   content: "";
   position: fixed;
@@ -390,7 +412,8 @@ html[lang="fa"] .eyebrow {
 @media (prefers-reduced-motion: reduce) {
   .marquee-track,
   .float-soft,
-  .pulse-ring::after {
+  .pulse-ring::after,
+  .animate-blink {
     animation: none;
   }
   *, *::before, *::after {

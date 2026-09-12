@@ -9,6 +9,7 @@ import { FooterIllustration, SocialLink } from "@/components/ui/ContactSocial";
 
 export function Contact() {
   const t = useTranslations("contact");
+  const th = useTranslations("hero");
   const locale = useLocale();
 
   const resumeHref = locale === "fa" ? site.resumeFa : site.resumeEn;
@@ -17,7 +18,7 @@ export function Contact() {
     <section
       id="contact"
       aria-label="Contact"
-      className="relative flex min-h-[80vh] flex-col justify-between overflow-hidden border-t border-border bg-background pb-8 pt-16 md:pt-32"
+      className="relative flex min-h-[70vh] flex-col justify-between overflow-hidden border-t border-border bg-background pb-8 pt-14 md:pt-20"
     >
       <span aria-hidden className="aura start-[20%] top-[10%] h-[460px] w-[460px] bg-sky" />
       <span aria-hidden className="aura end-[8%] bottom-[16%] h-[320px] w-[320px] bg-gold" />
@@ -66,29 +67,26 @@ export function Contact() {
         </motion.div>
       </div>
 
-      <footer className="relative mx-auto mt-16 flex w-full max-w-6xl flex-col items-center gap-4 border-t border-border px-4 pt-8 sm:px-6 md:mt-20 md:px-10">
-        <p className="flex flex-wrap items-center justify-center gap-1.5 font-mono text-[11px] tracking-wider text-muted">
+      <footer className="relative mx-auto mt-16 flex w-full max-w-6xl flex-col items-center gap-3 border-t border-border px-4 pt-6 sm:px-6 md:mt-20 md:flex-row md:justify-between md:px-10">
+        <p className="flex flex-wrap items-center justify-center gap-x-1.5 font-mono text-[11px] tracking-wider text-muted">
+          <span>© {localizeDigits("2026", locale)} {th("firstName")} {th("lastName")}</span>
+          <span aria-hidden>·</span>
           <span>{t("madeWith")}</span>
-          <span className="text-base leading-none" aria-hidden>
+          <span className="text-sm leading-none" aria-hidden>
             ☕
           </span>
           <span>+</span>
-          <span className="text-base leading-none" aria-hidden>
+          <span className="text-sm leading-none" aria-hidden>
             ❤️
           </span>
         </p>
-        <div className="flex w-full flex-col items-center justify-between gap-3 sm:flex-row">
-          <p className="font-mono text-[11px] tracking-wider text-muted/80">
-            © {localizeDigits("2026", locale)} {site.name}
-          </p>
-          <a
-            href={resumeHref}
-            download
-            className="font-mono text-[11px] tracking-wider text-muted transition-colors duration-[--d-fast] hover:text-accent"
-          >
-            {t("downloadResume")} ↓
-          </a>
-        </div>
+        <a
+          href={resumeHref}
+          download
+          className="font-mono text-[11px] tracking-wider text-muted transition-colors duration-[--d-fast] hover:text-accent"
+        >
+          {t("downloadResume")} ↓
+        </a>
       </footer>
     </section>
   );

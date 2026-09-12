@@ -1,9 +1,8 @@
 export const site = {
   name: "Sarvin Rezazadeh",
   firstName: "Sarvin",
-  role: "Frontend Developer",
-  tagline:
-    "Frontend engineer with React, Next.js, and TypeScript — I like turning ideas into interfaces people enjoy using.",
+  role: "Front-End Developer",
+  tagline: "Frontend for banking products — Razaan and the apps around it.",
   url: "https://sarvinrz.dev",
   email: "sarvin.rezazadeh7979@gmail.com",
   phone: "09931779422",
@@ -14,15 +13,18 @@ export const site = {
   resumeFa: "/resume-fa.pdf",
   cryptoDemo: "https://portfolio-omega-ten-22.vercel.app/",
   cryptoGithub: "https://github.com/sarvinrz/portfolio",
+  chatbotDemo: "https://enhanced-chatbot.vercel.app/",
+  vama: "https://vama.melalbank.ir",
 } as const;
 
 export const projectIds = [
-  "coreoffice",
-  "graph",
-  "workflow",
-  "monitoring",
+  "razean",
+  "portal",
   "loan",
-  "crypto",
+  "monitoring",
+  "workflow",
+  "migration",
+  "minis",
 ] as const;
 
 export type ProjectId = (typeof projectIds)[number];
@@ -38,63 +40,76 @@ export interface ProjectMeta {
 
 export const projectsMeta: ProjectMeta[] = [
   {
-    id: "coreoffice",
+    id: "razean",
     kind: "featured",
-    tech: ["Next.js", "Turborepo", "TanStack Query", "Ant Design", "Material UI", "CSS Modules", "Storybook"],
+    tech: ["React", "TypeScript", "MUI", "SignalR", "WebSocket", "Form.io", "Camunda"],
     gallery: [
-      { src: "/assets/project-coreoffice.png", alt: "CoreOffice ERP evaluation module" },
-      { src: "/assets/gallery/coreoffice-2.svg", alt: "CoreOffice component library preview" },
-      { src: "/assets/gallery/coreoffice-3.svg", alt: "CoreOffice documentation site" },
+      { src: "/assets/gallery/coreoffice.jpg", alt: "Razaan ERP" },
+      { src: "/assets/gallery/coreoffice-4.svg", alt: "Razaan evaluation module" },
+      { src: "/assets/gallery/coreoffice-graph.jpg", alt: "Entity graph in Razaan" },
+      { src: "/assets/gallery/graph-razaan.gif", alt: "Razaan graph demo" },
     ],
   },
   {
-    id: "graph",
-    kind: "case-study",
-    tech: ["React", "D3", "TypeScript"],
+    id: "portal",
+    kind: "satellite",
+    tech: ["Next.js", "TypeScript", "Docker"],
     gallery: [
-      { src: "/assets/gallery/graph-1.svg", alt: "Relationship graph overview" },
-      { src: "/assets/gallery/graph-2.svg", alt: "Node detail panel" },
-      { src: "/assets/gallery/graph-3.svg", alt: "Graph filter controls" },
-    ],
-  },
-  {
-    id: "workflow",
-    kind: "case-study",
-    tech: ["React", "Form.io", "Camunda"],
-    gallery: [
-      { src: "/assets/gallery/workflow-1.svg", alt: "BPMN task inbox" },
-      { src: "/assets/gallery/workflow-2.svg", alt: "Process form builder" },
-      { src: "/assets/gallery/workflow-3.svg", alt: "Approval flow screen" },
-    ],
-  },
-  {
-    id: "monitoring",
-    kind: "case-study",
-    tech: ["Prometheus", "Grafana", "Graylog", "Docker"],
-    gallery: [
-      { src: "/assets/project-monitoring.png", alt: "Grafana Node Exporter dashboard" },
-      { src: "/assets/gallery/monitoring-2.svg", alt: "CPU metrics panel" },
-      { src: "/assets/gallery/monitoring-3.svg", alt: "Alert configuration" },
+      { src: "/assets/gallery/razaan-portal.jpg", alt: "Razaan portal" },
+      { src: "/assets/gallery/razaan-portal-1.jpg", alt: "Portal upload" },
+      { src: "/assets/gallery/razaan-portal-2.jpg", alt: "Portal module" },
+      { src: "/assets/gallery/razaan-portal-3.jpg", alt: "Portal process" },
     ],
   },
   {
     id: "loan",
     kind: "satellite",
-    tech: ["Next.js", "Tailwind CSS", "shadcn/ui", "Docker", "Redis"],
+    tech: ["Next.js", "BFF", "Redis", "Docker", "OWASP"],
     gallery: [
-      { src: "/assets/project-loan.png", alt: "Loan facilities landing page" },
-      { src: "/assets/gallery/loan-1.PNG", alt: "Loan application flow" },
-      { src: "/assets/gallery/loan-2.PNG", alt: "Loan application flow 2" },
-      { src: "/assets/gallery/loan-3.PNG", alt: "Loan dashboard preview" },
+      { src: "/assets/project-loan.png", alt: "VAMA loan site" },
+      { src: "/assets/gallery/loan-1.PNG", alt: "Loan application form" },
+      { src: "/assets/gallery/loan-2.PNG", alt: "Loan documents" },
+      { src: "/assets/gallery/loan-3.PNG", alt: "Loan request status" },
     ],
   },
   {
-    id: "crypto",
-    kind: "personal",
-    tech: ["React", "React Query", "i18n", "WebSocket"],
+    id: "monitoring",
+    kind: "case-study",
+    tech: ["Docker", "Prometheus", "Grafana", "Graylog", "Elasticsearch", "Nginx", "Fail2Ban"],
     gallery: [
-      { src: "/assets/gallery/crypto-1.PNG", alt: "Crypto market overview" },
-      { src: "/assets/gallery/crypto-2.PNG", alt: "Trading pair detail" },
+      { src: "/assets/project-monitoring.png", alt: "Grafana host metrics" },
+    ],
+  },
+  {
+    id: "workflow",
+    kind: "case-study",
+    tech: ["Form.io", "Camunda", "BPMN 2.0", "React"],
+    gallery: [
+      { src: "/assets/gallery/BPMN.jpg", alt: "Razaan BPMN cartable" },
+    ],
+  },
+  {
+    id: "migration",
+    kind: "featured",
+    tech: ["Next.js", "Turborepo", "TanStack Query", "CSS Modules", "Storybook", "Docusaurus"],
+    gallery: [
+      { src: "/assets/gallery/new-coreoffice.jpg", alt: "New Razaan" },
+      { src: "/assets/gallery/new-coreoffice-1.jpg", alt: "New Razaan screen" },
+      { src: "/assets/gallery/new-coreoffice-2.jpg", alt: "New Razaan module" },
+      { src: "/assets/gallery/new-coreoffice-3.jpg", alt: "New Razaan form" },
+      { src: "/assets/gallery/new-coreoffice-4.jpg", alt: "New Razaan dashboard" },
+    ],
+  },
+  {
+    id: "minis",
+    kind: "personal",
+    tech: ["React", "Next.js", "React Query", "i18n"],
+    gallery: [
+      { src: "/assets/gallery/crypto-1.PNG", alt: "Crypto dashboard" },
+      { src: "/assets/gallery/crypto-2.PNG", alt: "Crypto dashboard detail" },
+      { src: "/assets/gallery/chatbot1.PNG", alt: "Emotion chatbot" },
+      { src: "/assets/gallery/chatbot-2.PNG", alt: "Chatbot conversation" },
+      { src: "/assets/gallery/chatbot-3.PNG", alt: "Chatbot analysis" },
     ],
   },
 ];
@@ -102,18 +117,20 @@ export const projectsMeta: ProjectMeta[] = [
 export const stackCategoryKeys = [
   "core",
   "state",
-  "ui",
-  "platform",
-  "monitoring",
-  "specialized",
+  "interface",
+  "viz",
+  "workflow",
+  "build",
+  "runtime",
+  "observability",
 ] as const;
 
 export const marqueeRowA = [
-  "React", "Next.js", "TypeScript", "Turborepo", "TanStack Query", "Tailwind CSS", "Ant Design",
+  "React", "Next.js", "TypeScript", "Turborepo", "TanStack Query", "CSS Modules", "D3.js",
 ];
 
 export const marqueeRowB = [
-  "shadcn/ui", "D3.js", "Docker", "Grafana", "Prometheus", "Camunda", "Form.io",
+  "Form.io", "Camunda", "Docker", "Grafana", "Prometheus", "Graylog", "Redis",
 ];
 
 export const experienceIds = [
@@ -124,4 +141,3 @@ export const experienceIds = [
 ] as const;
 
 export const educationIds = ["masters", "bachelors"] as const;
-export const languageIds = ["english", "german", "turkish"] as const;

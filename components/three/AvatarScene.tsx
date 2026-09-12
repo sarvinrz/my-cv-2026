@@ -37,7 +37,7 @@ function CharacterRig({ reducedMotion }: { reducedMotion: boolean }) {
     const targetY = avatarState.scrollProgress * TWO_PI + avatarState.dragOffset;
     g.rotation.y = THREE.MathUtils.damp(g.rotation.y, targetY, 7, delta);
 
-    const targetTiltX = avatarState.pointerY * 0.15;
+    const targetTiltX = Math.min(0, avatarState.pointerY) * 0.15;
     const targetTiltZ = -avatarState.pointerX * 0.15;
     g.rotation.x = THREE.MathUtils.damp(g.rotation.x, targetTiltX, 4, delta);
     g.rotation.z = THREE.MathUtils.damp(g.rotation.z, targetTiltZ, 4, delta);

@@ -208,7 +208,7 @@ export function ProjectCarousel({
           scrollTrigger: {
             id: scrollTriggerId,
             trigger: section,
-            start: "top top",
+            start: "center center",
             end: () => `+=${scrollDistance()}`,
             pin: true,
             scrub: 0.4,
@@ -305,6 +305,7 @@ export function ProjectCarousel({
                 className="object-cover object-top"
                 sizes="(min-width: 1024px) 560px, 95vw"
                 priority={priority && i === 0}
+                unoptimized={slide.src.endsWith(".gif") || slide.src.endsWith(".svg")}
               />
             </div>
           ))}
@@ -387,6 +388,7 @@ export function ProjectCarousel({
                     className="object-contain object-center"
                     sizes="100vw"
                     priority
+                    unoptimized={slides[index].src.endsWith(".gif") || slides[index].src.endsWith(".svg")}
                   />
                   <NavChevrons
                     index={index}

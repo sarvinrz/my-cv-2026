@@ -19,7 +19,8 @@ const DRAG_SENSITIVITY = 0.009;
 function updatePointer(e: React.PointerEvent<HTMLDivElement>) {
   const rect = e.currentTarget.getBoundingClientRect();
   avatarState.pointerX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-  avatarState.pointerY = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+  // Look left / right / up only — downward look drops the hair.
+  avatarState.pointerY = Math.min(0, ((e.clientY - rect.top) / rect.height) * 2 - 1);
 }
 
 export function AvatarCanvas({ compact = false }: { compact?: boolean }) {

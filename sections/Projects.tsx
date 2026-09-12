@@ -2,24 +2,23 @@
 
 import { useRef } from "react";
 import { useTranslations } from "next-intl";
-import { projectsMeta, site, type ProjectMeta } from "@/lib/site";
+import { projectsMeta, type ProjectMeta } from "@/lib/site";
 import { useLocaleFormat } from "@/lib/format";
 import { ProjectCarousel } from "@/components/ui/ProjectCarousel";
 import { SectionHeading } from "@/components/ui/Section";
 import { Card, Chip } from "@/components/ui/Card";
 import { accentFor, accents } from "@/lib/design-tokens";
 
+type ProjectLink = { href: string; label: string };
+
 type ProjectCopy = {
   title: string;
   category: string;
   description: string;
-  problem: string;
-  contribution?: string[];
-  impact?: string[];
+  story?: string[];
   link?: string;
   linkLabel?: string;
-  githubLink?: string;
-  githubLabel?: string;
+  links?: ProjectLink[];
 };
 
 function ProjectDetailCard({
@@ -36,8 +35,8 @@ function ProjectDetailCard({
   const tc = useTranslations("common");
   const fmt = useLocaleFormat();
 
-  const demoHref = project.id === "crypto" ? site.cryptoDemo : copy.link;
-  const githubHref = project.id === "crypto" ? site.cryptoGithub : copy.githubLink;
+  const extraLinks = copy.links ?? [];
+  const demoHref = copy.link;
 
   return (
     <Card accent={accent} interactive={false} padded={false} className="flex w-full flex-col p-4 sm:p-5 lg:p-5">
@@ -74,50 +73,22 @@ function ProjectDetailCard({
         {copy.description}
       </p>
 
-      {copy.problem ? (
-        <div className="mt-2.5 border-t border-border pt-2.5">
-          <p className="eyebrow mb-1 text-muted">{tc("problem")}</p>
-          <p className="text-[13px] leading-snug text-foreground/80 lg:text-sm">{copy.problem}</p>
-        </div>
+      {(copy.story ?? []).length > 0 ? (
+        <ul className="mt-2.5 flex flex-col gap-1.5 border-t border-border pt-2.5">
+          {(copy.story ?? []).map((line) => (
+            <li key={line} className="flex gap-2 text-[13px] leading-snug text-foreground/80 lg:text-sm">
+              <span
+                className="mt-1.5 h-1 w-2 shrink-0 rounded-full"
+                style={{ background: accents[accent].base }}
+                aria-hidden
+              />
+              {line}
+            </li>
+          ))}
+        </ul>
       ) : null}
 
-      {(copy.contribution ?? []).length > 0 ? (
-        <div className="mt-2.5">
-          <p className="eyebrow mb-1.5 text-muted">{tc("contribution")}</p>
-          <ul className="flex flex-col gap-1">
-            {(copy.contribution ?? []).map((line) => (
-              <li key={line} className="flex gap-2 text-[13px] leading-snug text-foreground/80 lg:text-sm">
-                <span
-                  className="mt-1.5 h-1 w-2 shrink-0 rounded-full"
-                  style={{ background: accents[accent].base }}
-                  aria-hidden
-                />
-                {line}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
-
-      {copy.impact?.length ? (
-        <div className="mt-2.5">
-          <p className="eyebrow mb-1.5 text-muted">{tc("impact")}</p>
-          <ul className="flex flex-col gap-1">
-            {copy.impact.map((line) => (
-              <li key={line} className="flex gap-2 text-[13px] leading-snug text-foreground/80 lg:text-sm">
-                <span
-                  className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full"
-                  style={{ boxShadow: `inset 0 0 0 1.5px ${accents[accent].base}` }}
-                  aria-hidden
-                />
-                {line}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
-
-      {(demoHref || githubHref) && (
+      {(demoHref || extraLinks.length > 0) && (
         <div className="mt-2.5 flex flex-wrap gap-2">
           {demoHref ? (
             <a
@@ -130,17 +101,18 @@ function ProjectDetailCard({
               {copy.linkLabel ?? tc("liveDemo")} ↗
             </a>
           ) : null}
-          {githubHref ? (
+          {extraLinks.map((item) => (
             <a
-              href={githubHref}
+              key={item.href}
+              href={item.href}
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="link"
               className="rounded-md border border-border px-3 py-1.5 font-mono text-[10px] text-accent transition-colors hover:border-accent hover:text-accent-secondary"
             >
-              {copy.githubLabel ?? tc("github")} ↗
+              {item.label} ↗
             </a>
-          ) : null}
+          ))}
         </div>
       )}
 
@@ -180,9 +152,9 @@ function ProjectPanel({
 
   return (
     <section ref={sectionRef} aria-label={copy.title} className="relative border-t border-border bg-surface">
-      <div className="relative flex min-h-0 flex-col overflow-hidden py-8 lg:h-dvh lg:max-h-dvh lg:py-0 lg:pt-19 lg:pb-6">
-        <div className="mx-auto flex min-h-0 w-full max-w-6xl flex-1 items-center px-4 sm:px-6 md:px-10">
-          <div className="grid min-h-0 w-full items-center gap-5 lg:grid-cols-2 lg:gap-8">
+      <div className="relative flex flex-col justify-center overflow-hidden py-12 md:py-16">
+        <div className="mx-auto flex w-full max-w-6xl items-center px-4 sm:px-6 md:px-10">
+          <div className="grid w-full items-center gap-5 lg:grid-cols-2 lg:gap-8">
             <div data-cursor="view" dir="ltr" className="min-h-0 w-full self-center">
               <ProjectCarousel
                 key={`${project.id}-${project.gallery.length}`}
@@ -222,7 +194,7 @@ export function Projects() {
 
   return (
     <div id="work" aria-label="Projects">
-      <div className="border-t border-border bg-surface px-6 pb-8 pt-24 md:px-10 md:pt-28">
+      <div className="border-t border-border bg-surface px-6 pb-4 pt-14 md:px-10 md:pb-6 md:pt-20">
         <div className="mx-auto max-w-6xl">
           <SectionHeading
             number="02"

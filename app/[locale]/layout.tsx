@@ -22,6 +22,13 @@ const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
 });
 
+const peyda = localFont({
+  src: "../../public/fonts/Peyda.ttf",
+  variable: "--font-peyda",
+  display: "swap",
+  fallback: ["Tahoma", "Arial", "sans-serif"],
+});
+
 const iranyekan = localFont({
   src: [
     {
@@ -58,7 +65,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const catalog = locale === "fa" ? faMessages : enMessages;
-  const title = `${site.name} — ${catalog.meta.role}`;
+  const displayName =
+    locale === "fa" ? `${catalog.hero.firstName} ${catalog.hero.lastName}` : site.name;
+  const title = `${displayName} — ${catalog.meta.role}`;
 
   return {
     title,
@@ -103,7 +112,13 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
   const messages = locale === "fa" ? faMessages : enMessages;
   const dir = locale === "fa" ? "rtl" : "ltr";
-  const fontVars = [sora.variable, jakarta.variable, jetbrains.variable, locale === "fa" ? iranyekan.variable : ""]
+  const fontVars = [
+    sora.variable,
+    jakarta.variable,
+    jetbrains.variable,
+    locale === "fa" ? peyda.variable : "",
+    locale === "fa" ? iranyekan.variable : "",
+  ]
     .filter(Boolean)
     .join(" ");
 
@@ -116,7 +131,7 @@ export default async function LocaleLayout({
     >
       <body className="grain min-h-full bg-background text-foreground">
         <ThemeProvider>
-          <NextIntlClientProvider messages={messages}>
+          <NextIntlClientProvider locale={locale} messages={messages}>
             {children}
           </NextIntlClientProvider>
         </ThemeProvider>

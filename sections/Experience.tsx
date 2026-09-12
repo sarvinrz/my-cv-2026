@@ -127,7 +127,7 @@ export function Experience() {
           lead={t("lead")}
         />
 
-        <div data-timeline className="relative mt-10 md:mt-20">
+        <div data-timeline className="relative mt-8 md:mt-12">
           <span
             className="absolute start-0 top-0 hidden h-full w-px bg-border md:block"
             aria-hidden
