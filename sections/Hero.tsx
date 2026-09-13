@@ -16,7 +16,7 @@ function MaskedLine({ text, className }: { text: string; className?: string }) {
       {words.map((word, i) => (
         <span
           key={`${word}-${i}`}
-          className="inline-block overflow-hidden pb-[0.2em] pt-[0.12em] align-bottom"
+          className="inline-block overflow-hidden pb-[0.1em] pt-[0.12em] align-bottom"
         >
           <span data-hero-word className="inline-block will-change-transform">
             {word}
