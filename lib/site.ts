@@ -45,7 +45,7 @@ export const projectsMeta: ProjectMeta[] = [
     tech: ["React", "TypeScript", "MUI", "SignalR", "WebSocket", "Form.io", "Camunda"],
     gallery: [
       { src: "/assets/gallery/coreoffice.jpg", alt: "Razaan ERP" },
-      { src: "/assets/gallery/coreoffice-4.svg", alt: "Razaan evaluation module" },
+      { src: "/assets/gallery/coreoffice-4.jpg", alt: "Razaan evaluation module" },
       { src: "/assets/gallery/coreoffice-graph.jpg", alt: "Entity graph in Razaan" },
       { src: "/assets/gallery/graph-razaan.gif", alt: "Razaan graph demo" },
     ],
